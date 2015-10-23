@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = "PerchBroadcast"
   s.version          = "0.1.0"
-  s.summary          = "A short description of PerchBroadcast."
+  s.summary          = "Lightweight iOS SDK for broadcasting live video with django-broadcast."
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -17,24 +17,29 @@ Pod::Spec.new do |s|
 #   * Write the description between the DESC delimiters below.
 #   * Finally, don't worry about the indent, CocoaPods strips it!  
   s.description      = <<-DESC
+  						Easily broadcast one-to-many video and audio streams
+  					 	in conjunction with django-broadcast. Developed for use
+  					 	with the Perch iOS app. 
+
+  					 	https://perchlive.com
                        DESC
 
-  s.homepage         = "https://github.com/<GITHUB_USERNAME>/PerchBroadcast"
+  s.homepage         = "https://github.com/PerchLive/PerchBroadcast-iOS-SDK"
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
-  s.license          = 'MIT'
+  s.license          = { :type => 'Apache 2.0', :file => 'LICENSE' }
   s.author           = { "Chris Ballinger" => "chrisballinger@gmail.com" }
-  s.source           = { :git => "https://github.com/<GITHUB_USERNAME>/PerchBroadcast.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/PerchLive/PerchBroadcast-iOS-SDK.git", :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.platform     = :ios, '8.0'
   s.requires_arc = true
 
-  s.source_files = 'Pod/Classes/**/*'
+  s.source_files = 'PerchBroadcast/Classes/**/*'
   s.resource_bundles = {
-    'PerchBroadcast' => ['Pod/Assets/*.png']
+    'PerchBroadcast' => ['PerchBroadcast/Assets/*.png']
   }
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
+  # s.public_header_files = 'PerchBroadcast/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
 end

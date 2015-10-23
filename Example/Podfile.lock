@@ -1,0 +1,14 @@
+PODS:
+  - PerchBroadcast (0.1.0)
+
+DEPENDENCIES:
+  - PerchBroadcast (from `../`)
+
+EXTERNAL SOURCES:
+  PerchBroadcast:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  PerchBroadcast: dd305da4857004a2342274af3e3a2fef8e68505b
+
+COCOAPODS: 0.39.0
