@@ -34,12 +34,15 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '8.0'
   s.requires_arc = true
 
-  s.source_files = 'PerchBroadcast/Classes/**/*'
   s.resource_bundles = {
     'PerchBroadcast' => ['PerchBroadcast/Assets/*.png']
   }
 
-  # s.public_header_files = 'PerchBroadcast/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.source_files        = 'PerchBroadcast/Classes/**/*', 
+                          'FFmpeg/ffmpeg-ios-static-libs/include/**/*.h'
+  s.public_header_files = 'FFmpeg/ffmpeg-ios-static-libs/include/**/*.h'
+  s.header_mappings_dir = 'FFmpeg/ffmpeg-ios-static-libs/include'
+  s.vendored_libraries  = 'FFmpeg/ffmpeg-ios-static-libs/lib/*.a'
+  s.libraries           = 'avcodec', 'avdevice', 'avfilter', 'avformat', 'avutil',
+                          'swresample', 'swscale', 'iconv', 'z', 'bz2'
 end

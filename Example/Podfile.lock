@@ -9,6 +9,6 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  PerchBroadcast: dd305da4857004a2342274af3e3a2fef8e68505b
+  PerchBroadcast: f8e792d9b14221c736cd5b9866b9fa29a4d3c76e
 
 COCOAPODS: 0.39.0
