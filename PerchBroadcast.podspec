@@ -44,5 +44,16 @@ Pod::Spec.new do |s|
   s.header_mappings_dir = 'FFmpeg/ffmpeg-ios-static-libs/include'
   s.vendored_libraries  = 'FFmpeg/ffmpeg-ios-static-libs/lib/*.a'
   s.libraries           = 'avcodec', 'avdevice', 'avfilter', 'avformat', 'avutil',
-                          'swresample', 'swscale', 'iconv', 'z', 'bz2'
+                          'swresample', 'swscale', 'iconv', 'z', 'bz2', 'c++'
+
+  s.dependency 'AFNetworking', '~> 2.2'
+  s.dependency 'AWSS3', '~> 2.1'
+  s.dependency 'AWSCore'
+  s.dependency 'AFOAuth2Manager', '~> 2.0'
+  s.dependency 'CocoaLumberjack', '~> 1.0'
+  s.dependency 'SSKeychain', '~> 1.2'
+  s.dependency 'PureLayout', '~> 2.0'
+  s.dependency 'Mantle', '~> 1.4'
+  s.dependency 'SDWebImage', '~> 3.6'
+  s.dependency 'FormatterKit/TimeIntervalFormatter', '~> 1.4'
 end

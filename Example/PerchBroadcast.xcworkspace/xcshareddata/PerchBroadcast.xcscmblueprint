@@ -1,0 +1,37 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "83AD1FDCF7D0D9F96AFC4C4D08AD87F344EDF938",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "DA3225C64F00464E541795F9AAB591214DC5E6B2" : 0,
+    "83AD1FDCF7D0D9F96AFC4C4D08AD87F344EDF938" : 0,
+    "E73F4F0946F0E9EC88DD76C01DE2CB05AF6CEF0B" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "570DF8A1-31B8-4300-B99E-FDA62A19EB98",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "DA3225C64F00464E541795F9AAB591214DC5E6B2" : "PerchBroadcast-iOS-SDK\/FFmpeg\/ffmpeg-ios-static-libs\/",
+    "83AD1FDCF7D0D9F96AFC4C4D08AD87F344EDF938" : "PerchBroadcast-iOS-SDK\/",
+    "E73F4F0946F0E9EC88DD76C01DE2CB05AF6CEF0B" : ".."
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "PerchBroadcast",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Example\/PerchBroadcast.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:PerchLive\/PerchBroadcast-iOS-SDK.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "83AD1FDCF7D0D9F96AFC4C4D08AD87F344EDF938"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/chrisballinger\/ffmpeg-ios-static-libs.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "DA3225C64F00464E541795F9AAB591214DC5E6B2"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:PerchLive\/Perch-iOS.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E73F4F0946F0E9EC88DD76C01DE2CB05AF6CEF0B"
+    }
+  ]
+}
