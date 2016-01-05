@@ -39,15 +39,13 @@ Pod::Spec.new do |s|
   }
 
   s.source_files        = 'PerchBroadcast/Classes/**/*', 
-                          'FFmpeg/ffmpeg-ios-static-libs/include/**/*.h'
-  s.public_header_files = 'FFmpeg/ffmpeg-ios-static-libs/include/**/*.h'
-  s.header_mappings_dir = 'FFmpeg/ffmpeg-ios-static-libs/include'
-  s.vendored_libraries  = 'FFmpeg/ffmpeg-ios-static-libs/lib/*.a'
-  s.libraries           = 'avcodec', 'avdevice', 'avfilter', 'avformat', 'avutil',
-                          'swresample', 'swscale', 'iconv', 'z', 'bz2', 'c++'
+  # s.public_header_files = 'PerchBroadcast/Classes/**/*.h'
+  s.libraries           = 'c++'
 
   s.dependency 'AFNetworking', '~> 2.2'
   s.dependency 'AWSS3', '~> 2.1'
+  s.dependency 'FFmpeg'
+  s.dependency 'FFmpegWrapper'
   s.dependency 'AWSCore'
   s.dependency 'AFOAuth2Manager', '~> 2.0'
   s.dependency 'CocoaLumberjack', '~> 1.0'

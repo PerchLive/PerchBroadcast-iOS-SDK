@@ -30,6 +30,11 @@ PODS:
   - CocoaLumberjack/Core (1.9.2)
   - CocoaLumberjack/Extensions (1.9.2):
     - CocoaLumberjack/Core
+  - FFmpeg (2.8.3):
+    - FFmpeg/precompiled (= 2.8.3)
+  - FFmpeg/precompiled (2.8.3)
+  - FFmpegWrapper (1.0):
+    - FFmpeg (~> 2.2)
   - FormatterKit/TimeIntervalFormatter (1.8.0)
   - Mantle (1.5.6):
     - Mantle/extobjc (= 1.5.6)
@@ -40,6 +45,8 @@ PODS:
     - AWSCore
     - AWSS3 (~> 2.1)
     - CocoaLumberjack (~> 1.0)
+    - FFmpeg
+    - FFmpegWrapper
     - FormatterKit/TimeIntervalFormatter (~> 1.4)
     - Mantle (~> 1.4)
     - PureLayout (~> 2.0)
@@ -64,9 +71,11 @@ SPEC CHECKSUMS:
   AWSCore: c2f69975fd2caf38a10736961de28a0105cdb00c
   AWSS3: 9ac201e7a4ad8be0b68348c77acfd100027b97af
   CocoaLumberjack: 628fca2e88ef06f7cf6817309aa405f325d9a6fa
+  FFmpeg: f1428c3b60b5f9e349fcd5d7878705cd7f9a26f6
+  FFmpegWrapper: 9a932581137d17203e842ce942e171158336ae16
   FormatterKit: bddde83e054edf9d9ee14f9de3b3a5103db256f4
   Mantle: a197db93e0f1e36194b1fdbc078219a8492eaef2
-  PerchBroadcast: cf23088f32c4d945b12cfc98e935bb87fdf682c9
+  PerchBroadcast: 939d76dc2f1479805e431b4b6fec4d1223796909
   PureLayout: f25f0bb904d5ccfe6e31da3cb869185259f02e0d
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
   SSKeychain: 04c4ec40f4c3deda524e269bc76e5f30e638a174

@@ -1,0 +1,554 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5A672C94CE0699C38AC5241F /* libPods-PerchBroadcastExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B2FCEB3EBD9A13907433313F /* libPods-PerchBroadcastExample.a */; };
+		8AF5EF9C51ED1916744CFBFE /* libPods-PerchBroadcastExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78E449AF0F398C8CFE3569D5 /* libPods-PerchBroadcastExampleTests.a */; };
+		D984772D1C3C7759004DB872 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D984772C1C3C7759004DB872 /* main.m */; };
+		D98477301C3C7759004DB872 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D984772F1C3C7759004DB872 /* AppDelegate.m */; };
+		D98477331C3C7759004DB872 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D98477321C3C7759004DB872 /* ViewController.m */; };
+		D98477361C3C7759004DB872 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D98477341C3C7759004DB872 /* Main.storyboard */; };
+		D98477381C3C7759004DB872 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D98477371C3C7759004DB872 /* Assets.xcassets */; };
+		D984773B1C3C7759004DB872 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D98477391C3C7759004DB872 /* LaunchScreen.storyboard */; };
+		D98477461C3C7759004DB872 /* PerchBroadcastExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D98477451C3C7759004DB872 /* PerchBroadcastExampleTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D98477421C3C7759004DB872 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D98477201C3C7759004DB872 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D98477271C3C7759004DB872;
+			remoteInfo = PerchBroadcastExample;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		48440D516C25A37A9692618F /* Pods-PerchBroadcastExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PerchBroadcastExampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PerchBroadcastExampleTests/Pods-PerchBroadcastExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
+		78E449AF0F398C8CFE3569D5 /* libPods-PerchBroadcastExampleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PerchBroadcastExampleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		799630B15142BE1FF3A7728D /* Pods-PerchBroadcastExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PerchBroadcastExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-PerchBroadcastExample/Pods-PerchBroadcastExample.release.xcconfig"; sourceTree = "<group>"; };
+		B2FCEB3EBD9A13907433313F /* libPods-PerchBroadcastExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PerchBroadcastExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B98A762ECBDA800148DD5D6E /* Pods-PerchBroadcastExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PerchBroadcastExampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PerchBroadcastExampleTests/Pods-PerchBroadcastExampleTests.release.xcconfig"; sourceTree = "<group>"; };
+		D98477281C3C7759004DB872 /* PerchBroadcastExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PerchBroadcastExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D984772C1C3C7759004DB872 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D984772E1C3C7759004DB872 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		D984772F1C3C7759004DB872 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		D98477311C3C7759004DB872 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		D98477321C3C7759004DB872 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		D98477351C3C7759004DB872 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D98477371C3C7759004DB872 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D984773A1C3C7759004DB872 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D984773C1C3C7759004DB872 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D98477411C3C7759004DB872 /* PerchBroadcastExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PerchBroadcastExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D98477451C3C7759004DB872 /* PerchBroadcastExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PerchBroadcastExampleTests.m; sourceTree = "<group>"; };
+		D98477471C3C7759004DB872 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F2E6AECFF89BF004037CD76C /* Pods-PerchBroadcastExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PerchBroadcastExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PerchBroadcastExample/Pods-PerchBroadcastExample.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D98477251C3C7759004DB872 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A672C94CE0699C38AC5241F /* libPods-PerchBroadcastExample.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D984773E1C3C7759004DB872 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8AF5EF9C51ED1916744CFBFE /* libPods-PerchBroadcastExampleTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5CC325A545B52E67D6E84A92 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B2FCEB3EBD9A13907433313F /* libPods-PerchBroadcastExample.a */,
+				78E449AF0F398C8CFE3569D5 /* libPods-PerchBroadcastExampleTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B7488DB8AE4C2C706C467DD9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F2E6AECFF89BF004037CD76C /* Pods-PerchBroadcastExample.debug.xcconfig */,
+				799630B15142BE1FF3A7728D /* Pods-PerchBroadcastExample.release.xcconfig */,
+				48440D516C25A37A9692618F /* Pods-PerchBroadcastExampleTests.debug.xcconfig */,
+				B98A762ECBDA800148DD5D6E /* Pods-PerchBroadcastExampleTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		D984771F1C3C7759004DB872 = {
+			isa = PBXGroup;
+			children = (
+				D984772A1C3C7759004DB872 /* PerchBroadcastExample */,
+				D98477441C3C7759004DB872 /* PerchBroadcastExampleTests */,
+				D98477291C3C7759004DB872 /* Products */,
+				B7488DB8AE4C2C706C467DD9 /* Pods */,
+				5CC325A545B52E67D6E84A92 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		D98477291C3C7759004DB872 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D98477281C3C7759004DB872 /* PerchBroadcastExample.app */,
+				D98477411C3C7759004DB872 /* PerchBroadcastExampleTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D984772A1C3C7759004DB872 /* PerchBroadcastExample */ = {
+			isa = PBXGroup;
+			children = (
+				D984772E1C3C7759004DB872 /* AppDelegate.h */,
+				D984772F1C3C7759004DB872 /* AppDelegate.m */,
+				D98477311C3C7759004DB872 /* ViewController.h */,
+				D98477321C3C7759004DB872 /* ViewController.m */,
+				D98477341C3C7759004DB872 /* Main.storyboard */,
+				D98477371C3C7759004DB872 /* Assets.xcassets */,
+				D98477391C3C7759004DB872 /* LaunchScreen.storyboard */,
+				D984773C1C3C7759004DB872 /* Info.plist */,
+				D984772B1C3C7759004DB872 /* Supporting Files */,
+			);
+			path = PerchBroadcastExample;
+			sourceTree = "<group>";
+		};
+		D984772B1C3C7759004DB872 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D984772C1C3C7759004DB872 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D98477441C3C7759004DB872 /* PerchBroadcastExampleTests */ = {
+			isa = PBXGroup;
+			children = (
+				D98477451C3C7759004DB872 /* PerchBroadcastExampleTests.m */,
+				D98477471C3C7759004DB872 /* Info.plist */,
+			);
+			path = PerchBroadcastExampleTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D98477271C3C7759004DB872 /* PerchBroadcastExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D984774A1C3C7759004DB872 /* Build configuration list for PBXNativeTarget "PerchBroadcastExample" */;
+			buildPhases = (
+				7850CE2CFC99819F12490242 /* Check Pods Manifest.lock */,
+				D98477241C3C7759004DB872 /* Sources */,
+				D98477251C3C7759004DB872 /* Frameworks */,
+				D98477261C3C7759004DB872 /* Resources */,
+				B2F54A2225054FECD72B551B /* Embed Pods Frameworks */,
+				0A72CEFEF327EC9F97865B00 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PerchBroadcastExample;
+			productName = PerchBroadcastExample;
+			productReference = D98477281C3C7759004DB872 /* PerchBroadcastExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D98477401C3C7759004DB872 /* PerchBroadcastExampleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D984774D1C3C7759004DB872 /* Build configuration list for PBXNativeTarget "PerchBroadcastExampleTests" */;
+			buildPhases = (
+				474F38A743573B26177B401D /* Check Pods Manifest.lock */,
+				D984773D1C3C7759004DB872 /* Sources */,
+				D984773E1C3C7759004DB872 /* Frameworks */,
+				D984773F1C3C7759004DB872 /* Resources */,
+				61DA5F33434868E50CD1E303 /* Embed Pods Frameworks */,
+				543B6B73F0DC685DE971A79C /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D98477431C3C7759004DB872 /* PBXTargetDependency */,
+			);
+			name = PerchBroadcastExampleTests;
+			productName = PerchBroadcastExampleTests;
+			productReference = D98477411C3C7759004DB872 /* PerchBroadcastExampleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D98477201C3C7759004DB872 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Perch Innovations, Inc.";
+				TargetAttributes = {
+					D98477271C3C7759004DB872 = {
+						CreatedOnToolsVersion = 7.2;
+					};
+					D98477401C3C7759004DB872 = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = D98477271C3C7759004DB872;
+					};
+				};
+			};
+			buildConfigurationList = D98477231C3C7759004DB872 /* Build configuration list for PBXProject "PerchBroadcastExample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D984771F1C3C7759004DB872;
+			productRefGroup = D98477291C3C7759004DB872 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D98477271C3C7759004DB872 /* PerchBroadcastExample */,
+				D98477401C3C7759004DB872 /* PerchBroadcastExampleTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D98477261C3C7759004DB872 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D984773B1C3C7759004DB872 /* LaunchScreen.storyboard in Resources */,
+				D98477381C3C7759004DB872 /* Assets.xcassets in Resources */,
+				D98477361C3C7759004DB872 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D984773F1C3C7759004DB872 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0A72CEFEF327EC9F97865B00 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PerchBroadcastExample/Pods-PerchBroadcastExample-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		474F38A743573B26177B401D /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		543B6B73F0DC685DE971A79C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PerchBroadcastExampleTests/Pods-PerchBroadcastExampleTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		61DA5F33434868E50CD1E303 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PerchBroadcastExampleTests/Pods-PerchBroadcastExampleTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7850CE2CFC99819F12490242 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B2F54A2225054FECD72B551B /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PerchBroadcastExample/Pods-PerchBroadcastExample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D98477241C3C7759004DB872 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D98477331C3C7759004DB872 /* ViewController.m in Sources */,
+				D98477301C3C7759004DB872 /* AppDelegate.m in Sources */,
+				D984772D1C3C7759004DB872 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D984773D1C3C7759004DB872 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D98477461C3C7759004DB872 /* PerchBroadcastExampleTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D98477431C3C7759004DB872 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D98477271C3C7759004DB872 /* PerchBroadcastExample */;
+			targetProxy = D98477421C3C7759004DB872 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D98477341C3C7759004DB872 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D98477351C3C7759004DB872 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D98477391C3C7759004DB872 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D984773A1C3C7759004DB872 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D98477481C3C7759004DB872 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D98477491C3C7759004DB872 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D984774B1C3C7759004DB872 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F2E6AECFF89BF004037CD76C /* Pods-PerchBroadcastExample.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = PerchBroadcastExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.perchlive.PerchBroadcastExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		D984774C1C3C7759004DB872 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 799630B15142BE1FF3A7728D /* Pods-PerchBroadcastExample.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = PerchBroadcastExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.perchlive.PerchBroadcastExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		D984774E1C3C7759004DB872 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 48440D516C25A37A9692618F /* Pods-PerchBroadcastExampleTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = PerchBroadcastExampleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.perchlive.PerchBroadcastExampleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PerchBroadcastExample.app/PerchBroadcastExample";
+			};
+			name = Debug;
+		};
+		D984774F1C3C7759004DB872 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B98A762ECBDA800148DD5D6E /* Pods-PerchBroadcastExampleTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = PerchBroadcastExampleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.perchlive.PerchBroadcastExampleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PerchBroadcastExample.app/PerchBroadcastExample";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D98477231C3C7759004DB872 /* Build configuration list for PBXProject "PerchBroadcastExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D98477481C3C7759004DB872 /* Debug */,
+				D98477491C3C7759004DB872 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D984774A1C3C7759004DB872 /* Build configuration list for PBXNativeTarget "PerchBroadcastExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D984774B1C3C7759004DB872 /* Debug */,
+				D984774C1C3C7759004DB872 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D984774D1C3C7759004DB872 /* Build configuration list for PBXNativeTarget "PerchBroadcastExampleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D984774E1C3C7759004DB872 /* Debug */,
+				D984774F1C3C7759004DB872 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D98477201C3C7759004DB872 /* Project object */;
+}

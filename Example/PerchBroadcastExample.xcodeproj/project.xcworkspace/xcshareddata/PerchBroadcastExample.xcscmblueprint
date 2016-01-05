@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "83AD1FDCF7D0D9F96AFC4C4D08AD87F344EDF938",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "83AD1FDCF7D0D9F96AFC4C4D08AD87F344EDF938" : 0,
+    "E73F4F0946F0E9EC88DD76C01DE2CB05AF6CEF0B" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "44EE3F4C-DFB3-491B-8278-0F07BE36AE15",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "83AD1FDCF7D0D9F96AFC4C4D08AD87F344EDF938" : "PerchBroadcast-iOS-SDK\/",
+    "E73F4F0946F0E9EC88DD76C01DE2CB05AF6CEF0B" : ".."
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "PerchBroadcastExample",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Example\/PerchBroadcastExample.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:PerchLive\/PerchBroadcast-iOS-SDK.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "83AD1FDCF7D0D9F96AFC4C4D08AD87F344EDF938"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:PerchLive\/Perch-iOS.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E73F4F0946F0E9EC88DD76C01DE2CB05AF6CEF0B"
+    }
+  ]
+}
