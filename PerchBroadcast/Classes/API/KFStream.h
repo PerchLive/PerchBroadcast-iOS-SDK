@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 #import "Mantle.h"
+#import "BroadcastStream.h"
 
 @class KFUser;
 
@@ -25,7 +26,7 @@ typedef NS_ENUM(NSUInteger, KFStreamState) {
 extern NSString * const KFStreamTypeKey;
 
 
-@protocol KFStream <NSObject>
+@protocol KFStream <BroadcastStream>
 
 /**
  *  Stream owner, maps to a KFUser
@@ -33,10 +34,7 @@ extern NSString * const KFStreamTypeKey;
  */
 @property (nonatomic, strong) NSString *username;
 
-/**
- *  Stream UUID (unique identifier)
- */
-@property (nonatomic, strong, readonly) NSString *streamID;
+
 
 /**
  *  HLS or RTMP (currently only HLS is supported)
@@ -58,10 +56,6 @@ extern NSString * const KFStreamTypeKey;
  */
 @property (nonatomic, strong, readonly) NSURL *kickflipURL;
 
-/**
- *  When recording was started
- */
-@property (nonatomic, strong, readonly) NSDate *startDate;
 
 /**
  *  When recording was finished

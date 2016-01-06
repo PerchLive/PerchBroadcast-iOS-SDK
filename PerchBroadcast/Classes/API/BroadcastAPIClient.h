@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "KFStream.h"
+#import "BroadcastStream.h"
 
 @protocol BroadcastAPIClient <NSObject>
 
@@ -22,7 +23,7 @@
  *
  *  @param endpointCallback Called when request completes for new stream or error
  */
-- (void) startNewStream:(void (^)(id <KFStream> newStream, NSError *error))endpointCallback;
+- (void) startNewStream:(void (^)(id <BroadcastStream> newStream, NSError *error))endpointCallback;
 
 /**
  *  Marks the stream as stopped on the server
@@ -30,7 +31,7 @@
  *  @param stream        stream to be stopped
  *  @param callbackBlock (optional) whether or not this was successful
  */
-- (void) stopStream:(id <KFStream>)stream callbackBlock:(void (^)(BOOL success, NSError *error))callbackBlock;
+- (void) stopStream:(id <BroadcastStream>)stream callbackBlock:(void (^)(BOOL success, NSError *error))callbackBlock;
 
 @optional
 
@@ -41,6 +42,6 @@
  *  @param stream        stream to be updated
  *  @param callbackBlock (optional) serialized KFStream response or error
  */
-- (void) updateMetadataForStream:(id <KFStream>)stream callbackBlock:(void (^)(id <KFStream> updatedStream, NSError *error))callbackBlock;
+- (void) updateMetadataForStream:(id <BroadcastStream>)stream callbackBlock:(void (^)(id <BroadcastStream> updatedStream, NSError *error))callbackBlock;
 
 @end

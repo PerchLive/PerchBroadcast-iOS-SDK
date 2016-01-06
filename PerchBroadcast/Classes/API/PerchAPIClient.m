@@ -39,7 +39,7 @@
  
  
  */
-- (void) startNewStream:(void (^)(id <KFStream> newStream, NSError *error))endpointCallback {
+- (void) startNewStream:(void (^)(id <BroadcastStream> newStream, NSError *error))endpointCallback {
     
 }
 
@@ -49,7 +49,7 @@
  *  @param stream        stream to be stopped
  *  @param callbackBlock (optional) whether or not this was successful
  */
-- (void) stopStream:(id <KFStream>)stream callbackBlock:(void (^)(BOOL success, NSError *error))callbackBlock {
+- (void) stopStream:(id <BroadcastStream>)stream callbackBlock:(void (^)(BOOL success, NSError *error))callbackBlock {
     
 }
 

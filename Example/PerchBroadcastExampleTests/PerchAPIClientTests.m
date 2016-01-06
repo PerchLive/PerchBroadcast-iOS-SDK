@@ -8,6 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import "PerchAPIClient.h"
+#import "PerchStream.h"
 
 @interface PerchAPIClientTests : XCTestCase
 @property (nonatomic, strong) PerchAPIClient *apiClient;
@@ -26,16 +27,33 @@
     [super tearDown];
 }
 
-- (void)testExample {
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
-}
-
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
+- (void)testJSONSerialization {
+    NSString * json =
+    @"{\
+    \"stream\" : {\
+    \"id\" : \"stream_id\",\
+    \"name\" : \"some_name\",\
+    \"start_date\" : \"2015-10-22 15:27:40\"\
+    },\
+    \"endpoint\": {\
+    \"S3\": {\
+    \"aws_access_key_id\": \"key\",\
+    \"aws_secret_access_key\": \"secret\",\
+    \"aws_session_token\": \"token\",\
+    \"aws_expiration\": 3600.0,\
+    \"aws_bucket_name\": \"bucket\",\
+    \"aws_bucket_path\": \"path\",\
+    \"aws_region\": \"us-west-1\"\
+    }\
+    }\
+    }";
+    NSError *error = nil;
+    NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:[json dataUsingEncoding:NSUTF8StringEncoding]  options:0 error:&error];
+    XCTAssertNil(error);
+    PerchStream *stream = [MTLJSONAdapter modelOfClass:PerchStream.class fromJSONDictionary:jsonDict error:&error];
+    XCTAssertNil(error);
+    XCTAssertNotNil(stream);
+    XCTAssertNotNil(stream.endpoint);
 }
 
 @end

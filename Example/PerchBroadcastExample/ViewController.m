@@ -26,11 +26,6 @@
 }
 
 - (IBAction)startButtonPressed:(id)sender {
-    [Kickflip setupWithAPIKey:@"" secret:@""];
-    [Kickflip presentBroadcasterFromViewController:self ready:^(KFStream *stream) {
-        
-    } completion:^(BOOL success, NSError *error) {
-        
-    }];
+    
 }
 @end
