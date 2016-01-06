@@ -15,9 +15,9 @@
 
 @implementation KFBroadcastViewController
 
-- (id) init {
+- (id) initWithAPIClient:(id<BroadcastAPIClient>)apiClient {
     if (self = [super init]) {
-        self.recorder = [[KFRecorder alloc] init];
+        self.recorder = [[KFRecorder alloc] initWithAPIClient:apiClient];
         self.recorder.delegate = self;
     }
     return self;

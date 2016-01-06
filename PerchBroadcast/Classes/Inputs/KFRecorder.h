@@ -12,6 +12,7 @@
 #import "KFH264Encoder.h"
 #import "KFHLSUploader.h"
 #import <CoreLocation/CoreLocation.h>
+#import "BroadcastAPIClient.h"
 
 @class KFRecorder, KFHLSWriter, KFStream;
 
@@ -40,6 +41,7 @@
 @property (nonatomic, strong) KFH264Encoder *h264Encoder;
 @property (nonatomic, strong) KFHLSWriter *hlsWriter;
 @property (nonatomic, strong) KFStream *stream;
+@property (nonatomic, strong) id<BroadcastAPIClient> apiClient;
 
 @property (nonatomic) NSUInteger videoWidth;
 @property (nonatomic) NSUInteger videoHeight;
@@ -51,5 +53,7 @@
 
 - (void) startRecording;
 - (void) stopRecording;
+
+- (instancetype) initWithAPIClient:(id<BroadcastAPIClient>)apiClient NS_DESIGNATED_INITIALIZER;
 
 @end

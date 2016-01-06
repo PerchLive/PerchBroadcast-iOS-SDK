@@ -14,6 +14,7 @@
 #import "Kickflip.h"
 
 static NSString* const kKFAPIClientErrorDomain = @"kKFAPIClientErrorDomain";
+static NSString* const kKFBaseURL = @"https://kickflip.io/api/1.2";
 
 @implementation KFAPIClient
 
@@ -27,7 +28,7 @@ static NSString* const kKFAPIClientErrorDomain = @"kKFAPIClientErrorDomain";
 }
 
 - (instancetype) init {
-    NSURL *url = [NSURL URLWithString:@"https://kickflip.io/api/1.2"];
+    NSURL *url = [NSURL URLWithString:kKFBaseURL];
     if (self = [super initWithBaseURL:url]) {
         [self checkOAuthCredentialsWithCallback:nil];
     }
@@ -35,7 +36,10 @@ static NSString* const kKFAPIClientErrorDomain = @"kKFAPIClientErrorDomain";
 }
 
 - (void) checkOAuthCredentialsWithCallback:(void (^)(BOOL success, NSError * error))callback {
-    if ([self.requestSerializer valueForHTTPHeaderField:@"Authorization"] != nil) {
+    callback(YES, nil);
+    
+    // Punt on authorization design
+    /*if ([self.requestSerializer valueForHTTPHeaderField:@"Authorization"] != nil) {
         if (callback) {
             callback(YES, nil);
         }
@@ -68,6 +72,7 @@ static NSString* const kKFAPIClientErrorDomain = @"kKFAPIClientErrorDomain";
             callback(NO, error);
         }
     }];
+     */
 }
 
 - (void) setAuthorizationHeaderWithCredential:(AFOAuthCredential*)credential {

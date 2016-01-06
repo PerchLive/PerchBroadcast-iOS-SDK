@@ -12,16 +12,16 @@
 #import <CoreLocation/CoreLocation.h>
 #import "KFPaginationInfo.h"
 #import "KFUser.h"
-
+#import "BroadcastAPIClient.h"
 
 
 /**
  *  Use KFAPIClient to interact with the kickflip.io API.
  */
 
-@protocol KFAPIClient <NSObject>
+@protocol KFAPIClient <BroadcastAPIClient>
 
-@required
+@optional
 
 ///-------------------------------
 /// @name Users
@@ -36,44 +36,6 @@
  *  @param callbackBlock called when the request completes with either an active user or an error
  */
 - (void) loginExistingUserWithUsername:(NSString*)username password:(NSString*)password callbackBlock:(void (^)(id<KFUser> activeUser, NSError *error))callbackBlock;
-
-///-------------------------------
-/// @name Stream Lifecycle
-///-------------------------------
-
-/**
- *  Starts a new public stream to be fed to KFRecorder
- *
- *  @param endpointCallback Called when request completes for new stream or error
- */
-- (void) startNewStream:(void (^)(id <KFStream> newStream, NSError *error))endpointCallback;
-
-/**
- *  Marks the stream as stopped on the server
- *
- *  @param stream        stream to be stopped
- *  @param callbackBlock (optional) whether or not this was successful
- */
-- (void) stopStream:(id <KFStream>)stream callbackBlock:(void (^)(BOOL success, NSError *error))callbackBlock;
-
-///-------------------------------
-/// @name Utility
-///-------------------------------
-
-
-/**
- *  Singleton for easy access around your project
- *
- *  @return KFAPIClient singleton
- */
-+ (instancetype) sharedClient;
-
-@optional
-
-
-///-------------------------------
-/// @name Users
-///-------------------------------
 
 /**
  *  Requests new active KFUser.
@@ -128,15 +90,6 @@
  */
 - (void) startNewPrivateStream:(void (^)(id <KFStream> newStream, NSError *error))endpointCallback;
 
-
-/**
- *  Posts to /api/stream/change the changes in your KFStream. This will return a new
- *  stream object, leaving the original object unchanged.
- *
- *  @param stream        stream to be updated
- *  @param callbackBlock (optional) serialized KFStream response or error
- */
-- (void) updateMetadataForStream:(id <KFStream>)stream callbackBlock:(void (^)(id <KFStream> updatedStream, NSError *error))callbackBlock;
 
 ///-------------------------------
 /// @name Stream Search

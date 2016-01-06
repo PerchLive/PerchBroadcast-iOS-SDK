@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "KFDirectoryWatcher.h"
 #import "KFHLSManifestGenerator.h"
+#import "BroadcastAPIClient.h"
 
 @class KFS3Stream, KFHLSUploader;
 
@@ -30,8 +31,9 @@
 @property (nonatomic, strong) KFS3Stream *stream;
 @property (nonatomic) BOOL useSSL;
 @property (nonatomic, strong) KFHLSManifestGenerator *manifestGenerator;
+@property (nonatomic, strong) id<BroadcastAPIClient> apiClient;
 
-- (id) initWithDirectoryPath:(NSString*)directoryPath stream:(KFS3Stream*)stream;
+- (id) initWithDirectoryPath:(NSString*)directoryPath stream:(KFS3Stream*)stream apiClient:(id<BroadcastAPIClient>)apiClient;
 - (void) finishedRecording;
 
 - (NSURL*) manifestURL;

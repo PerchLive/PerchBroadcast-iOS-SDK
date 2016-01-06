@@ -35,4 +35,6 @@
 @property (nonatomic, strong) UIImageView *rotationImageView;
 @property (nonatomic, strong) UIButton *cancelButton;
 
+- (instancetype) initWithAPIClient:(id<BroadcastAPIClient>)apiClient;
+
 @end

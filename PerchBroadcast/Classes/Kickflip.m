@@ -49,6 +49,7 @@ static Kickflip *_kickflip = nil;
     Kickflip *kickflip = [Kickflip sharedInstance];
     kickflip.apiKey = key;
     kickflip.apiSecret = secret;
+    /*
     KFUser *activeUser = [KFUser activeUser];
     if (!activeUser) {
         [[KFAPIClient sharedClient] requestNewActiveUserWithUsername:nil callbackBlock:^(KFUser *newUser, NSError *error) {
@@ -59,6 +60,7 @@ static Kickflip *_kickflip = nil;
             }
         }];
     }
+     */
 }
 
 + (NSString*) apiKey {

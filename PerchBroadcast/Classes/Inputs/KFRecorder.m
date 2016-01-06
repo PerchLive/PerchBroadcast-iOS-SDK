@@ -24,12 +24,16 @@
 @property (nonatomic) double minBitrate;
 @property (nonatomic) BOOL hasScreenshot;
 @property (nonatomic, strong) CLLocationManager *locationManager;
+@property (nonatomic, strong) KFHLSMonitor *hlsMonitor;
 @end
 
 @implementation KFRecorder
 
-- (id) init {
+- (id) initWithAPIClient:(id<BroadcastAPIClient>)apiClient {
     if (self = [super init]) {
+        NSParameterAssert(apiClient != nil);
+        _apiClient = apiClient;
+        _hlsMonitor = [[KFHLSMonitor alloc] initWithAPIClient:apiClient];
         _minBitrate = 300 * 1000;
         [self setupSession];
         [self setupEncoders];
@@ -212,7 +216,7 @@
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
     [self.locationManager startUpdatingLocation];
-    [[KFAPIClient sharedClient] startNewStream:^(KFStream *endpointResponse, NSError *error) {
+    [self.apiClient startNewStream:^(KFStream *endpointResponse, NSError *error) {
         if (error) {
             if (self.delegate && [self.delegate respondsToSelector:@selector(recorderDidStartRecording:error:)]) {
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -228,7 +232,7 @@
             s3Endpoint.streamState = KFStreamStateStreaming;
             [self setupHLSWriterWithEndpoint:s3Endpoint];
             
-            [[KFHLSMonitor sharedMonitor] startMonitoringFolderPath:_hlsWriter.directoryPath endpoint:s3Endpoint delegate:self];
+            [self.hlsMonitor startMonitoringFolderPath:_hlsWriter.directoryPath endpoint:s3Endpoint delegate:self];
             
             NSError *error = nil;
             [_hlsWriter prepareForWriting:&error];
@@ -272,11 +276,13 @@
         stream.city = placemark.locality;
         stream.state = placemark.administrativeArea;
         stream.country = placemark.country;
-        [[KFAPIClient sharedClient] updateMetadataForStream:stream callbackBlock:^(KFStream *updatedStream, NSError *error) {
-            if (error) {
-                DDLogError(@"Error updating stream geocoder info: %@", error);
-            }
-        }];
+        if ([self.apiClient respondsToSelector:@selector(updateMetadataForStream:callbackBlock:)]) {
+            [self.apiClient updateMetadataForStream:stream callbackBlock:^(KFStream *updatedStream, NSError *error) {
+                if (error) {
+                    DDLogError(@"Error updating stream geocoder info: %@", error);
+                }
+            }];
+        }
     }];
 }
 
@@ -285,11 +291,13 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         if (self.lastLocation) {
             self.stream.endLocation = self.lastLocation;
-            [[KFAPIClient sharedClient] updateMetadataForStream:self.stream callbackBlock:^(KFStream *updatedStream, NSError *error) {
-                if (error) {
-                    DDLogError(@"Error updating stream endLocation: %@", error);
-                }
-            }];
+            if ([self.apiClient respondsToSelector:@selector(updateMetadataForStream:callbackBlock:)]) {
+                [self.apiClient updateMetadataForStream:self.stream callbackBlock:^(KFStream *updatedStream, NSError *error) {
+                    if (error) {
+                        DDLogError(@"Error updating stream endLocation: %@", error);
+                    }
+                }];
+            }
         }
         [_session stopRunning];
         self.isRecording = NO;
@@ -298,7 +306,7 @@
         if (error) {
             DDLogError(@"Error stop recording: %@", error);
         }
-        [[KFAPIClient sharedClient] stopStream:self.stream callbackBlock:^(BOOL success, NSError *error) {
+        [self.apiClient stopStream:self.stream callbackBlock:^(BOOL success, NSError *error) {
             if (!success) {
                 DDLogError(@"Error stopping stream: %@", error);
             } else {
@@ -306,7 +314,7 @@
             }
         }];
         if ([self.stream isKindOfClass:[KFS3Stream class]]) {
-            [[KFHLSMonitor sharedMonitor] finishUploadingContentsAtFolderPath:_hlsWriter.directoryPath endpoint:(KFS3Stream*)self.stream];
+            [self.hlsMonitor finishUploadingContentsAtFolderPath:_hlsWriter.directoryPath endpoint:(KFS3Stream*)self.stream];
         }
         if (self.delegate && [self.delegate respondsToSelector:@selector(recorderDidFinishRecording:error:)]) {
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -354,11 +362,13 @@
     }
     if (self.stream && !self.stream.startLocation) {
         self.stream.startLocation = self.lastLocation;
-        [[KFAPIClient sharedClient] updateMetadataForStream:self.stream callbackBlock:^(KFStream *updatedStream, NSError *error) {
-            if (error) {
-                DDLogError(@"Error updating stream startLocation: %@", error);
-            }
-        }];
+        if ([self.apiClient respondsToSelector:@selector(updateMetadataForStream:callbackBlock:)]) {
+            [self.apiClient updateMetadataForStream:self.stream callbackBlock:^(KFStream *updatedStream, NSError *error) {
+                if (error) {
+                    DDLogError(@"Error updating stream startLocation: %@", error);
+                }
+            }];
+        }
         [self reverseGeocodeStream:self.stream];
     }
 }

@@ -48,9 +48,10 @@ static NSString * const kKFS3Key = @"kKFS3Key";
 
 @implementation KFHLSUploader
 
-- (id) initWithDirectoryPath:(NSString *)directoryPath stream:(KFS3Stream *)stream {
+- (id) initWithDirectoryPath:(NSString *)directoryPath stream:(KFS3Stream *)stream apiClient:(id<BroadcastAPIClient>)apiClient {
     if (self = [super init]) {
         self.stream = stream;
+        _apiClient = apiClient;
         _directoryPath = [directoryPath copy];
         dispatch_async(dispatch_get_main_queue(), ^{
             self.directoryWatcher = [KFDirectoryWatcher watchFolderWithPath:_directoryPath delegate:self];
@@ -350,13 +351,15 @@ static NSString * const kKFS3Key = @"kKFS3Key";
                 DDLogError(@"Error removing thumbnail: %@", error.description);
             }
             self.stream.thumbnailURL = [self urlWithFileName:fileName];
-            [[KFAPIClient sharedClient] updateMetadataForStream:self.stream callbackBlock:^(KFStream *updatedStream, NSError *error) {
-                if (error) {
-                    DDLogError(@"Error updating stream thumbnail: %@", error);
-                } else {
-                    DDLogInfo(@"Updated stream thumbnail: %@", updatedStream.thumbnailURL);
-                }
-            }];
+            if ([self.apiClient respondsToSelector:@selector(updateMetadataForStream:callbackBlock:)]) {
+                [self.apiClient updateMetadataForStream:self.stream callbackBlock:^(KFStream *updatedStream, NSError *error) {
+                    if (error) {
+                        DDLogError(@"Error updating stream thumbnail: %@", error);
+                    } else {
+                        DDLogInfo(@"Updated stream thumbnail: %@", updatedStream.thumbnailURL);
+                    }
+                }];
+            }
         }
     });
 }

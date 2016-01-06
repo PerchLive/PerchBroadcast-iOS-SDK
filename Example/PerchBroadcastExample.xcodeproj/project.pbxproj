@@ -16,6 +16,7 @@
 		D98477381C3C7759004DB872 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D98477371C3C7759004DB872 /* Assets.xcassets */; };
 		D984773B1C3C7759004DB872 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D98477391C3C7759004DB872 /* LaunchScreen.storyboard */; };
 		D98477461C3C7759004DB872 /* PerchBroadcastExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D98477451C3C7759004DB872 /* PerchBroadcastExampleTests.m */; };
+		D98477571C3C9002004DB872 /* PerchAPIClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D98477561C3C9002004DB872 /* PerchAPIClientTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		D98477411C3C7759004DB872 /* PerchBroadcastExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PerchBroadcastExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D98477451C3C7759004DB872 /* PerchBroadcastExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PerchBroadcastExampleTests.m; sourceTree = "<group>"; };
 		D98477471C3C7759004DB872 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D98477561C3C9002004DB872 /* PerchAPIClientTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PerchAPIClientTests.m; sourceTree = "<group>"; };
 		F2E6AECFF89BF004037CD76C /* Pods-PerchBroadcastExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PerchBroadcastExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PerchBroadcastExample/Pods-PerchBroadcastExample.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -138,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				D98477451C3C7759004DB872 /* PerchBroadcastExampleTests.m */,
+				D98477561C3C9002004DB872 /* PerchAPIClientTests.m */,
 				D98477471C3C7759004DB872 /* Info.plist */,
 			);
 			path = PerchBroadcastExampleTests;
@@ -352,6 +355,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D98477571C3C9002004DB872 /* PerchAPIClientTests.m in Sources */,
 				D98477461C3C7759004DB872 /* PerchBroadcastExampleTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
