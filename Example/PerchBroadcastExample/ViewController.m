@@ -7,7 +7,8 @@
 //
 
 #import "ViewController.h"
-#import "Kickflip.h"
+#import "KFBroadcastViewController.h"
+#import "PerchAPIClient.h"
 
 @interface ViewController ()
 
@@ -26,6 +27,7 @@
 }
 
 - (IBAction)startButtonPressed:(id)sender {
-    
+    PerchAPIClient *apiClient = [[PerchAPIClient alloc] initWithBaseURL:[NSURL URLWithString:@"https://perchlive.com/api/"]];
+    KFBroadcastViewController *broadcaster = [[KFBroadcastViewController alloc] initWithAPIClient:apiClient]; 
 }
 @end
