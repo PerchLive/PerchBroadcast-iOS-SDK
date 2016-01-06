@@ -1,6 +1,0 @@
-[submodule "FFmpeg/ffmpeg-ios-static-libs"]
-	path = FFmpeg/ffmpeg-ios-static-libs
-	url = https://github.com/chrisballinger/ffmpeg-ios-static-libs.git
-[submodule "FFmpeg/FFmpeg-iOS-build-script"]
-	path = FFmpeg/FFmpeg-iOS-build-script
-	url = https://github.com/kewlbear/FFmpeg-iOS-build-script
