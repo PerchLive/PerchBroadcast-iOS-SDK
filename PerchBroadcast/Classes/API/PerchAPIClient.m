@@ -7,6 +7,7 @@
 //
 
 #import "PerchAPIClient.h"
+#import "PerchStream.h"
 
 @implementation PerchAPIClient
 
@@ -40,7 +41,14 @@
  
  */
 - (void) startNewStream:(void (^)(id <BroadcastStream> newStream, NSError *error))endpointCallback {
-    
+    NSParameterAssert(endpointCallback != nil);
+    [self POST:@"stream/start" parameters:@{@"type": @"hls"} success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        NSError *error = nil;
+        PerchStream *stream = [MTLJSONAdapter modelOfClass:PerchStream.class fromJSONDictionary:responseObject error:&error];
+        endpointCallback(stream, error);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        endpointCallback(nil, error);
+    }];
 }
 
 /**
@@ -50,7 +58,17 @@
  *  @param callbackBlock (optional) whether or not this was successful
  */
 - (void) stopStream:(id <BroadcastStream>)stream callbackBlock:(void (^)(BOOL success, NSError *error))callbackBlock {
-    
+    [self POST:@"stream/stop" parameters:@{@"id": stream.streamID} success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        NSError *error = nil;
+        PerchStream *stream = [MTLJSONAdapter modelOfClass:PerchStream.class fromJSONDictionary:responseObject error:&error];
+        if (callbackBlock) {
+            callbackBlock(stream, error);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (callbackBlock) {
+            callbackBlock(nil, error);
+        }
+    }];
 }
 
 @end

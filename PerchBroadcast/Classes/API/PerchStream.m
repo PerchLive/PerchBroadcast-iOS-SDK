@@ -11,7 +11,7 @@
 #import "NSValueTransformer+MTLPredefinedTransformerAdditions.h"
 
 @implementation PerchStream
-@synthesize name, streamID, startDate, endpoint;
+@synthesize name, streamID, startDate, endpoint, stopDate;
 
 /* start stream
  {
@@ -37,6 +37,7 @@
     return @{NSStringFromSelector(@selector(name)): @"stream.name",
              NSStringFromSelector(@selector(streamID)): @"stream.id",
              NSStringFromSelector(@selector(startDate)): @"stream.start_date",
+             NSStringFromSelector(@selector(stopDate)): @"stream.stop_date",
              NSStringFromSelector(@selector(endpoint)): @"endpoint",
              };
 }

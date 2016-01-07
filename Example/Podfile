@@ -7,6 +7,6 @@ end
 
 target 'PerchBroadcastExampleTests', :exclusive => true do
   pod "PerchBroadcast", :path => "../"
-
+  pod 'URLMock', '~> 1.3.1'
   
 end

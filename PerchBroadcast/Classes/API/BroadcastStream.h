@@ -22,6 +22,11 @@
 @property (nonatomic, strong, readonly) NSDate *startDate;
 
 /**
+ *  When recording was stopped
+ */
+@property (nonatomic, strong, readonly) NSDate *stopDate;
+
+/**
  *  Stream name
  */
 @property (nonatomic, strong, readonly) NSString *name;
