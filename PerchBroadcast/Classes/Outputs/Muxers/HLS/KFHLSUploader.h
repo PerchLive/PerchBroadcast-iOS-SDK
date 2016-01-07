@@ -10,6 +10,7 @@
 #import "KFDirectoryWatcher.h"
 #import "KFHLSManifestGenerator.h"
 #import "BroadcastAPIClient.h"
+#import "BroadcastStream.h"
 
 @class KFS3Stream, KFHLSUploader;
 
@@ -28,12 +29,12 @@
 @property (readonly, nonatomic, strong) NSString *directoryPath;
 @property (nonatomic) dispatch_queue_t scanningQueue;
 @property (nonatomic) dispatch_queue_t callbackQueue;
-@property (nonatomic, strong) KFS3Stream *stream;
+@property (nonatomic, strong) id<BroadcastStream> stream;
 @property (nonatomic) BOOL useSSL;
 @property (nonatomic, strong) KFHLSManifestGenerator *manifestGenerator;
 @property (nonatomic, strong) id<BroadcastAPIClient> apiClient;
 
-- (id) initWithDirectoryPath:(NSString*)directoryPath stream:(KFS3Stream*)stream apiClient:(id<BroadcastAPIClient>)apiClient;
+- (id) initWithDirectoryPath:(NSString*)directoryPath stream:(id<BroadcastStream>)stream apiClient:(id<BroadcastAPIClient>)apiClient;
 - (void) finishedRecording;
 
 - (NSURL*) manifestURL;

@@ -29,19 +29,19 @@ static KFHLSMonitor *_sharedMonitor = nil;
     return self;
 }
 
-- (void) startMonitoringFolderPath:(NSString *)path endpoint:(KFS3Stream *)endpoint delegate:(id<KFHLSUploaderDelegate>)delegate {
+- (void) startMonitoringFolderPath:(NSString*)path stream:(id<BroadcastStream>)stream delegate:(id<KFHLSUploaderDelegate>)delegate {
     dispatch_async(self.monitorQueue, ^{
-        KFHLSUploader *hlsUploader = [[KFHLSUploader alloc] initWithDirectoryPath:path stream:endpoint apiClient:self.apiClient];
+        KFHLSUploader *hlsUploader = [[KFHLSUploader alloc] initWithDirectoryPath:path stream:stream apiClient:self.apiClient];
         hlsUploader.delegate = delegate;
         [self.hlsUploaders setObject:hlsUploader forKey:path];
     });
 }
 
-- (void) finishUploadingContentsAtFolderPath:(NSString*)path endpoint:(KFS3Stream*)endpoint {
+- (void) finishUploadingContentsAtFolderPath:(NSString*)path stream:(id<BroadcastStream>)stream {
     dispatch_async(self.monitorQueue, ^{
         KFHLSUploader *hlsUploader = [self.hlsUploaders objectForKey:path];
         if (!hlsUploader) {
-            hlsUploader = [[KFHLSUploader alloc] initWithDirectoryPath:path stream:endpoint apiClient:self.apiClient];
+            hlsUploader = [[KFHLSUploader alloc] initWithDirectoryPath:path stream:stream apiClient:self.apiClient];
             [self.hlsUploaders setObject:hlsUploader forKey:path];
         }
         hlsUploader.delegate = self;

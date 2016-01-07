@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D98477271C3C7759004DB872"
-               BuildableName = "PerchBroadcastExample.app"
-               BlueprintName = "PerchBroadcastExample"
+               BlueprintIdentifier = "D9ED28461C3F0E5100ECE9A5"
+               BuildableName = "BroadcastMock.app"
+               BlueprintName = "BroadcastMock"
                ReferencedContainer = "container:PerchBroadcastExample.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,23 +28,13 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D98477401C3C7759004DB872"
-               BuildableName = "PerchBroadcastExampleTests.xctest"
-               BlueprintName = "PerchBroadcastExampleTests"
-               ReferencedContainer = "container:PerchBroadcastExample.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D98477271C3C7759004DB872"
-            BuildableName = "PerchBroadcastExample.app"
-            BlueprintName = "PerchBroadcastExample"
+            BlueprintIdentifier = "D9ED28461C3F0E5100ECE9A5"
+            BuildableName = "BroadcastMock.app"
+            BlueprintName = "BroadcastMock"
             ReferencedContainer = "container:PerchBroadcastExample.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -65,9 +55,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D98477271C3C7759004DB872"
-            BuildableName = "PerchBroadcastExample.app"
-            BlueprintName = "PerchBroadcastExample"
+            BlueprintIdentifier = "D9ED28461C3F0E5100ECE9A5"
+            BuildableName = "BroadcastMock.app"
+            BlueprintName = "BroadcastMock"
             ReferencedContainer = "container:PerchBroadcastExample.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -84,9 +74,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D98477271C3C7759004DB872"
-            BuildableName = "PerchBroadcastExample.app"
-            BlueprintName = "PerchBroadcastExample"
+            BlueprintIdentifier = "D9ED28461C3F0E5100ECE9A5"
+            BuildableName = "BroadcastMock.app"
+            BlueprintName = "BroadcastMock"
             ReferencedContainer = "container:PerchBroadcastExample.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

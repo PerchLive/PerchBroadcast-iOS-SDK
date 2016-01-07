@@ -48,7 +48,7 @@ static NSString * const kKFS3Key = @"kKFS3Key";
 
 @implementation KFHLSUploader
 
-- (id) initWithDirectoryPath:(NSString *)directoryPath stream:(KFS3Stream *)stream apiClient:(id<BroadcastAPIClient>)apiClient {
+- (id) initWithDirectoryPath:(NSString *)directoryPath stream:(id<BroadcastStream>)stream apiClient:(id<BroadcastAPIClient>)apiClient {
     if (self = [super init]) {
         self.stream = stream;
         _apiClient = apiClient;
@@ -65,18 +65,25 @@ static NSString * const kKFS3Key = @"kKFS3Key";
         _manifestReady = NO;
         _isFinishedRecording = NO;
         
-        AWSRegionType region = [KFAWSCredentialsProvider regionTypeForRegion:stream.awsRegion];
-        KFAWSCredentialsProvider *awsCredentialsProvider = [[KFAWSCredentialsProvider alloc] initWithStream:stream];
-        AWSServiceConfiguration *configuration = [[AWSServiceConfiguration alloc] initWithRegion:region
-                                                                             credentialsProvider:awsCredentialsProvider];
+        if ([stream.endpoint conformsToProtocol:@protocol(BroadcastS3Endpoint)]) {
+            id<BroadcastS3Endpoint> s3Endpoint = (id<BroadcastS3Endpoint>)stream.endpoint;
+            AWSRegionType region = [KFAWSCredentialsProvider regionTypeForRegion:s3Endpoint.awsRegion];
+            KFAWSCredentialsProvider *awsCredentialsProvider = [[KFAWSCredentialsProvider alloc] initWithEndpoint:s3Endpoint];
+            AWSServiceConfiguration *configuration = [[AWSServiceConfiguration alloc] initWithRegion:region
+                                                                                 credentialsProvider:awsCredentialsProvider];
+            
+            [AWSS3TransferManager registerS3TransferManagerWithConfiguration:configuration forKey:kKFS3TransferManagerKey];
+            [AWSS3 registerS3WithConfiguration:configuration forKey:kKFS3Key];
+            
+            self.transferManager = [AWSS3TransferManager S3TransferManagerForKey:kKFS3TransferManagerKey];
+            self.s3 = [AWSS3 S3ForKey:kKFS3Key];
+            
+            self.manifestGenerator = [[KFHLSManifestGenerator alloc] initWithTargetDuration:10 playlistType:KFHLSManifestPlaylistTypeVOD];
+        } else {
+            NSAssert(NO, @"Only S3 uploads are supported at this time");
+        }
         
-        [AWSS3TransferManager registerS3TransferManagerWithConfiguration:configuration forKey:kKFS3TransferManagerKey];
-        [AWSS3 registerS3WithConfiguration:configuration forKey:kKFS3Key];
         
-        self.transferManager = [AWSS3TransferManager S3TransferManagerForKey:kKFS3TransferManagerKey];
-        self.s3 = [AWSS3 S3ForKey:kKFS3Key];
-        
-        self.manifestGenerator = [[KFHLSManifestGenerator alloc] initWithTargetDuration:10 playlistType:KFHLSManifestPlaylistTypeVOD];
     }
     return self;
 }
@@ -123,27 +130,38 @@ static NSString * const kKFS3Key = @"kKFS3Key";
     }
     [_files setObject:kUploadStateUploading forKey:fileName];
     NSString *filePath = [_directoryPath stringByAppendingPathComponent:fileName];
-    NSString *key = [self awsKeyForStream:self.stream fileName:fileName];
     
-    AWSS3TransferManagerUploadRequest *uploadRequest = [AWSS3TransferManagerUploadRequest new];
-    uploadRequest.bucket = self.stream.bucketName;
-    uploadRequest.key = key;
-    uploadRequest.body = [NSURL fileURLWithPath:filePath];
-    uploadRequest.ACL = AWSS3ObjectCannedACLPublicRead;
-    
-    [[self.transferManager upload:uploadRequest] continueWithBlock:^id(AWSTask *task) {
-        if (task.error) {
-            [self s3RequestFailedForFileName:fileName withError:task.error];
-        } else {
-            [self s3RequestCompletedForFileName:fileName];
-        }
-        return nil;
-    }];
-
+    if ([self.stream.endpoint conformsToProtocol:@protocol(BroadcastS3Endpoint)]) {
+        id<BroadcastS3Endpoint> s3Endpoint = (id<BroadcastS3Endpoint>)self.stream.endpoint;
+        NSString *key = [self awsKeyForStream:self.stream fileName:fileName];
+        
+        AWSS3TransferManagerUploadRequest *uploadRequest = [AWSS3TransferManagerUploadRequest new];
+        uploadRequest.bucket = s3Endpoint.bucketName;
+        uploadRequest.key = key;
+        uploadRequest.body = [NSURL fileURLWithPath:filePath];
+        uploadRequest.ACL = AWSS3ObjectCannedACLPublicRead;
+        
+        [[self.transferManager upload:uploadRequest] continueWithBlock:^id(AWSTask *task) {
+            if (task.error) {
+                [self s3RequestFailedForFileName:fileName withError:task.error];
+            } else {
+                [self s3RequestCompletedForFileName:fileName];
+            }
+            return nil;
+        }];
+    } else {
+        NSAssert(NO, @"unsupported endpoint type");
+    }
 }
 
-- (NSString*) awsKeyForStream:(KFS3Stream*)stream fileName:(NSString*)fileName {
-    return [NSString stringWithFormat:@"%@%@", stream.awsPrefix, fileName];
+- (NSString*) awsKeyForStream:(id<BroadcastStream>)stream fileName:(NSString*)fileName {
+    if ([stream.endpoint conformsToProtocol:@protocol(BroadcastS3Endpoint)]) {
+        id<BroadcastS3Endpoint> s3Endpoint = (id<BroadcastS3Endpoint>)stream.endpoint;
+        return [NSString stringWithFormat:@"%@%@", s3Endpoint.awsPrefix, fileName];
+    } else {
+        NSAssert(NO, @"unsupported endpoint type");
+    }
+    return nil;
 }
 
 - (void) updateManifestWithString:(NSString*)manifestString manifestName:(NSString*)manifestName {
@@ -151,8 +169,9 @@ static NSString * const kKFS3Key = @"kKFS3Key";
     DDLogVerbose(@"New manifest:\n%@", manifestString);
     NSString *key = [self awsKeyForStream:self.stream fileName:manifestName];
     
+    id<BroadcastS3Endpoint> s3Endpoint = (id<BroadcastS3Endpoint>)self.stream.endpoint;
     AWSS3PutObjectRequest *uploadRequest = [AWSS3TransferManagerUploadRequest new];
-    uploadRequest.bucket = self.stream.bucketName;
+    uploadRequest.bucket = s3Endpoint.bucketName;
     uploadRequest.key = key;
     uploadRequest.body = data;
     uploadRequest.ACL = AWSS3ObjectCannedACLPublicRead;
@@ -220,7 +239,8 @@ static NSString * const kKFS3Key = @"kKFS3Key";
         NSString *key = [self awsKeyForStream:self.stream fileName:fileName];
 
         AWSS3TransferManagerUploadRequest *uploadRequest = [AWSS3TransferManagerUploadRequest new];
-        uploadRequest.bucket = self.stream.bucketName;
+        id<BroadcastS3Endpoint> s3Endpoint = (id<BroadcastS3Endpoint>)self.stream.endpoint;
+        uploadRequest.bucket = s3Endpoint.bucketName;
         uploadRequest.key = key;
         uploadRequest.body = [NSURL fileURLWithPath:filePath];
         uploadRequest.ACL = AWSS3ObjectCannedACLPublicRead;
@@ -264,7 +284,8 @@ static NSString * const kKFS3Key = @"kKFS3Key";
     if (self.useSSL) {
         ssl = @"s";
     }
-    NSString *urlString = [NSString stringWithFormat:@"http%@://%@.s3.amazonaws.com/%@", ssl, self.stream.bucketName, key];
+    id<BroadcastS3Endpoint> s3Endpoint = (id<BroadcastS3Endpoint>)self.stream.endpoint;
+    NSString *urlString = [NSString stringWithFormat:@"http%@://%@.s3.amazonaws.com/%@", ssl, s3Endpoint.bucketName, key];
     return [NSURL URLWithString:urlString];
 }
 
@@ -350,7 +371,10 @@ static NSString * const kKFS3Key = @"kKFS3Key";
             if (error) {
                 DDLogError(@"Error removing thumbnail: %@", error.description);
             }
-            self.stream.thumbnailURL = [self urlWithFileName:fileName];
+            if ([self.stream isKindOfClass:[KFStream class]]) {
+                KFStream *kfStream = (KFStream*)self.stream;
+                kfStream.thumbnailURL = [self urlWithFileName:fileName];
+            }
             if ([self.apiClient respondsToSelector:@selector(updateMetadataForStream:callbackBlock:)]) {
                 [self.apiClient updateMetadataForStream:self.stream callbackBlock:^(KFStream *updatedStream, NSError *error) {
                     if (error) {

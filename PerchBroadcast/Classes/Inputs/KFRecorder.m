@@ -29,7 +29,13 @@
 
 @implementation KFRecorder
 
-- (id) initWithAPIClient:(id<BroadcastAPIClient>)apiClient {
+- (instancetype) init {
+    if (self = [self initWithAPIClient:nil]) {
+    }
+    return self;
+}
+
+- (instancetype) initWithAPIClient:(id<BroadcastAPIClient>)apiClient {
     if (self = [super init]) {
         NSParameterAssert(apiClient != nil);
         _apiClient = apiClient;
@@ -50,11 +56,11 @@
     return nil;
 }
 
-- (void) setupHLSWriterWithEndpoint:(KFS3Stream*)endpoint {
+- (void) setupHLSWriterWithStream:(id<BroadcastStream>)stream {
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
-    NSString *folderName = [NSString stringWithFormat:@"%@.hls", endpoint.streamID];
+    NSString *folderName = [NSString stringWithFormat:@"%@.hls", stream.streamID];
     NSString *hlsDirectoryPath = [basePath stringByAppendingPathComponent:folderName];
     [[NSFileManager defaultManager] createDirectoryAtPath:hlsDirectoryPath withIntermediateDirectories:YES attributes:nil error:nil];
     self.hlsWriter = [[KFHLSWriter alloc] initWithDirectoryPath:hlsDirectoryPath];
@@ -216,7 +222,7 @@
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
     [self.locationManager startUpdatingLocation];
-    [self.apiClient startNewStream:^(KFStream *endpointResponse, NSError *error) {
+    [self.apiClient startNewStream:^(id<BroadcastStream> endpointResponse, NSError *error) {
         if (error) {
             if (self.delegate && [self.delegate respondsToSelector:@selector(recorderDidStartRecording:error:)]) {
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -227,24 +233,23 @@
         }
         self.stream = endpointResponse;
         [self setStreamStartLocation];
-        if ([endpointResponse isKindOfClass:[KFS3Stream class]]) {
-            KFS3Stream *s3Endpoint = (KFS3Stream*)endpointResponse;
-            s3Endpoint.streamState = KFStreamStateStreaming;
-            [self setupHLSWriterWithEndpoint:s3Endpoint];
-            
-            [self.hlsMonitor startMonitoringFolderPath:_hlsWriter.directoryPath endpoint:s3Endpoint delegate:self];
-            
-            NSError *error = nil;
-            [_hlsWriter prepareForWriting:&error];
-            if (error) {
-                DDLogError(@"Error preparing for writing: %@", error);
-            }
-            self.isRecording = YES;
-            if (self.delegate && [self.delegate respondsToSelector:@selector(recorderDidStartRecording:error:)]) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [self.delegate recorderDidStartRecording:self error:nil];
-                });
-            }
+        if ([self.stream isKindOfClass:[KFStream class]]) {
+            KFStream *kfStream = (KFStream*)self.stream;
+            kfStream.streamState = KFStreamStateStreaming;
+        }
+        [self setupHLSWriterWithStream:self.stream];
+        
+        [self.hlsMonitor startMonitoringFolderPath:_hlsWriter.directoryPath stream:self.stream delegate:self];
+        
+        [_hlsWriter prepareForWriting:&error];
+        if (error) {
+            DDLogError(@"Error preparing for writing: %@", error);
+        }
+        self.isRecording = YES;
+        if (self.delegate && [self.delegate respondsToSelector:@selector(recorderDidStartRecording:error:)]) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.delegate recorderDidStartRecording:self error:nil];
+            });
         }
     }];
     
@@ -290,7 +295,10 @@
     [self.locationManager stopUpdatingLocation];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         if (self.lastLocation) {
-            self.stream.endLocation = self.lastLocation;
+            if ([self.stream isKindOfClass:[KFStream class]]) {
+                KFStream *kfStream = (KFStream*)self.stream;
+                kfStream.endLocation = self.lastLocation;
+            }
             if ([self.apiClient respondsToSelector:@selector(updateMetadataForStream:callbackBlock:)]) {
                 [self.apiClient updateMetadataForStream:self.stream callbackBlock:^(KFStream *updatedStream, NSError *error) {
                     if (error) {
@@ -313,9 +321,7 @@
                 DDLogVerbose(@"Stream stopped: %@", self.stream.streamID);
             }
         }];
-        if ([self.stream isKindOfClass:[KFS3Stream class]]) {
-            [self.hlsMonitor finishUploadingContentsAtFolderPath:_hlsWriter.directoryPath endpoint:(KFS3Stream*)self.stream];
-        }
+        [self.hlsMonitor finishUploadingContentsAtFolderPath:_hlsWriter.directoryPath stream:self.stream];
         if (self.delegate && [self.delegate respondsToSelector:@selector(recorderDidFinishRecording:error:)]) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.delegate recorderDidFinishRecording:self error:error];
@@ -360,16 +366,19 @@
     if (!self.lastLocation) {
         return;
     }
-    if (self.stream && !self.stream.startLocation) {
-        self.stream.startLocation = self.lastLocation;
-        if ([self.apiClient respondsToSelector:@selector(updateMetadataForStream:callbackBlock:)]) {
-            [self.apiClient updateMetadataForStream:self.stream callbackBlock:^(KFStream *updatedStream, NSError *error) {
-                if (error) {
-                    DDLogError(@"Error updating stream startLocation: %@", error);
-                }
-            }];
+    if ([self.stream isKindOfClass:[KFStream class]]) {
+        KFStream *kfStream = (KFStream*)self.stream;
+        if (kfStream && !kfStream.startLocation) {
+            kfStream.startLocation = self.lastLocation;
+            if ([self.apiClient respondsToSelector:@selector(updateMetadataForStream:callbackBlock:)]) {
+                [self.apiClient updateMetadataForStream:self.stream callbackBlock:^(KFStream *updatedStream, NSError *error) {
+                    if (error) {
+                        DDLogError(@"Error updating stream startLocation: %@", error);
+                    }
+                }];
+            }
+            [self reverseGeocodeStream:kfStream];
         }
-        [self reverseGeocodeStream:self.stream];
     }
 }
 

@@ -17,6 +17,14 @@
 		D984773B1C3C7759004DB872 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D98477391C3C7759004DB872 /* LaunchScreen.storyboard */; };
 		D98477461C3C7759004DB872 /* PerchBroadcastExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D98477451C3C7759004DB872 /* PerchBroadcastExampleTests.m */; };
 		D98477571C3C9002004DB872 /* PerchAPIClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D98477561C3C9002004DB872 /* PerchAPIClientTests.m */; };
+		D9ED28491C3F0E5100ECE9A5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D98477321C3C7759004DB872 /* ViewController.m */; };
+		D9ED284A1C3F0E5100ECE9A5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D984772F1C3C7759004DB872 /* AppDelegate.m */; };
+		D9ED284B1C3F0E5100ECE9A5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D984772C1C3C7759004DB872 /* main.m */; };
+		D9ED284D1C3F0E5100ECE9A5 /* libPods-PerchBroadcastExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B2FCEB3EBD9A13907433313F /* libPods-PerchBroadcastExample.a */; };
+		D9ED284F1C3F0E5100ECE9A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D98477391C3C7759004DB872 /* LaunchScreen.storyboard */; };
+		D9ED28501C3F0E5100ECE9A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D98477371C3C7759004DB872 /* Assets.xcassets */; };
+		D9ED28511C3F0E5100ECE9A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D98477341C3C7759004DB872 /* Main.storyboard */; };
+		D9ED285B1C3F0F8600ECE9A5 /* MockAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D9ED285A1C3F0F8600ECE9A5 /* MockAPIClient.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,7 +43,7 @@
 		799630B15142BE1FF3A7728D /* Pods-PerchBroadcastExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PerchBroadcastExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-PerchBroadcastExample/Pods-PerchBroadcastExample.release.xcconfig"; sourceTree = "<group>"; };
 		B2FCEB3EBD9A13907433313F /* libPods-PerchBroadcastExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PerchBroadcastExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B98A762ECBDA800148DD5D6E /* Pods-PerchBroadcastExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PerchBroadcastExampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PerchBroadcastExampleTests/Pods-PerchBroadcastExampleTests.release.xcconfig"; sourceTree = "<group>"; };
-		D98477281C3C7759004DB872 /* PerchBroadcastExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PerchBroadcastExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D98477281C3C7759004DB872 /* Broadcast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Broadcast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D984772C1C3C7759004DB872 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D984772E1C3C7759004DB872 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D984772F1C3C7759004DB872 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -45,10 +53,14 @@
 		D98477371C3C7759004DB872 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D984773A1C3C7759004DB872 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D984773C1C3C7759004DB872 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D98477411C3C7759004DB872 /* PerchBroadcastExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PerchBroadcastExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D98477411C3C7759004DB872 /* PerchBroadcastTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PerchBroadcastTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D98477451C3C7759004DB872 /* PerchBroadcastExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PerchBroadcastExampleTests.m; sourceTree = "<group>"; };
 		D98477471C3C7759004DB872 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D98477561C3C9002004DB872 /* PerchAPIClientTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PerchAPIClientTests.m; sourceTree = "<group>"; };
+		D9ED28571C3F0E5100ECE9A5 /* BroadcastMock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BroadcastMock.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9ED28581C3F0E5100ECE9A5 /* PerchBroadcastExample copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "PerchBroadcastExample copy-Info.plist"; path = "/Users/chrisbal/Documents/Perch/PerchBroadcast-iOS-SDK/Example/PerchBroadcastExample copy-Info.plist"; sourceTree = "<absolute>"; };
+		D9ED28591C3F0F8600ECE9A5 /* MockAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MockAPIClient.h; sourceTree = "<group>"; };
+		D9ED285A1C3F0F8600ECE9A5 /* MockAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MockAPIClient.m; sourceTree = "<group>"; };
 		F2E6AECFF89BF004037CD76C /* Pods-PerchBroadcastExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PerchBroadcastExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PerchBroadcastExample/Pods-PerchBroadcastExample.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -66,6 +78,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				8AF5EF9C51ED1916744CFBFE /* libPods-PerchBroadcastExampleTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9ED284C1C3F0E5100ECE9A5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D9ED284D1C3F0E5100ECE9A5 /* libPods-PerchBroadcastExample.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,14 +120,16 @@
 				D98477291C3C7759004DB872 /* Products */,
 				B7488DB8AE4C2C706C467DD9 /* Pods */,
 				5CC325A545B52E67D6E84A92 /* Frameworks */,
+				D9ED28581C3F0E5100ECE9A5 /* PerchBroadcastExample copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
 		D98477291C3C7759004DB872 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D98477281C3C7759004DB872 /* PerchBroadcastExample.app */,
-				D98477411C3C7759004DB872 /* PerchBroadcastExampleTests.xctest */,
+				D98477281C3C7759004DB872 /* Broadcast.app */,
+				D98477411C3C7759004DB872 /* PerchBroadcastTests.xctest */,
+				D9ED28571C3F0E5100ECE9A5 /* BroadcastMock.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -115,6 +137,7 @@
 		D984772A1C3C7759004DB872 /* PerchBroadcastExample */ = {
 			isa = PBXGroup;
 			children = (
+				D9ED285C1C3F0F9100ECE9A5 /* Mock */,
 				D984772E1C3C7759004DB872 /* AppDelegate.h */,
 				D984772F1C3C7759004DB872 /* AppDelegate.m */,
 				D98477311C3C7759004DB872 /* ViewController.h */,
@@ -146,12 +169,21 @@
 			path = PerchBroadcastExampleTests;
 			sourceTree = "<group>";
 		};
+		D9ED285C1C3F0F9100ECE9A5 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				D9ED28591C3F0F8600ECE9A5 /* MockAPIClient.h */,
+				D9ED285A1C3F0F8600ECE9A5 /* MockAPIClient.m */,
+			);
+			name = Mock;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D98477271C3C7759004DB872 /* PerchBroadcastExample */ = {
+		D98477271C3C7759004DB872 /* Broadcast */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D984774A1C3C7759004DB872 /* Build configuration list for PBXNativeTarget "PerchBroadcastExample" */;
+			buildConfigurationList = D984774A1C3C7759004DB872 /* Build configuration list for PBXNativeTarget "Broadcast" */;
 			buildPhases = (
 				7850CE2CFC99819F12490242 /* Check Pods Manifest.lock */,
 				D98477241C3C7759004DB872 /* Sources */,
@@ -164,14 +196,14 @@
 			);
 			dependencies = (
 			);
-			name = PerchBroadcastExample;
+			name = Broadcast;
 			productName = PerchBroadcastExample;
-			productReference = D98477281C3C7759004DB872 /* PerchBroadcastExample.app */;
+			productReference = D98477281C3C7759004DB872 /* Broadcast.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D98477401C3C7759004DB872 /* PerchBroadcastExampleTests */ = {
+		D98477401C3C7759004DB872 /* PerchBroadcastTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D984774D1C3C7759004DB872 /* Build configuration list for PBXNativeTarget "PerchBroadcastExampleTests" */;
+			buildConfigurationList = D984774D1C3C7759004DB872 /* Build configuration list for PBXNativeTarget "PerchBroadcastTests" */;
 			buildPhases = (
 				474F38A743573B26177B401D /* Check Pods Manifest.lock */,
 				D984773D1C3C7759004DB872 /* Sources */,
@@ -185,10 +217,30 @@
 			dependencies = (
 				D98477431C3C7759004DB872 /* PBXTargetDependency */,
 			);
-			name = PerchBroadcastExampleTests;
+			name = PerchBroadcastTests;
 			productName = PerchBroadcastExampleTests;
-			productReference = D98477411C3C7759004DB872 /* PerchBroadcastExampleTests.xctest */;
+			productReference = D98477411C3C7759004DB872 /* PerchBroadcastTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D9ED28461C3F0E5100ECE9A5 /* BroadcastMock */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D9ED28541C3F0E5100ECE9A5 /* Build configuration list for PBXNativeTarget "BroadcastMock" */;
+			buildPhases = (
+				D9ED28471C3F0E5100ECE9A5 /* Check Pods Manifest.lock */,
+				D9ED28481C3F0E5100ECE9A5 /* Sources */,
+				D9ED284C1C3F0E5100ECE9A5 /* Frameworks */,
+				D9ED284E1C3F0E5100ECE9A5 /* Resources */,
+				D9ED28521C3F0E5100ECE9A5 /* Embed Pods Frameworks */,
+				D9ED28531C3F0E5100ECE9A5 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BroadcastMock;
+			productName = PerchBroadcastExample;
+			productReference = D9ED28571C3F0E5100ECE9A5 /* BroadcastMock.app */;
+			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
@@ -221,8 +273,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D98477271C3C7759004DB872 /* PerchBroadcastExample */,
-				D98477401C3C7759004DB872 /* PerchBroadcastExampleTests */,
+				D98477271C3C7759004DB872 /* Broadcast */,
+				D98477401C3C7759004DB872 /* PerchBroadcastTests */,
+				D9ED28461C3F0E5100ECE9A5 /* BroadcastMock */,
 			);
 		};
 /* End PBXProject section */
@@ -242,6 +295,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9ED284E1C3F0E5100ECE9A5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D9ED284F1C3F0E5100ECE9A5 /* LaunchScreen.storyboard in Resources */,
+				D9ED28501C3F0E5100ECE9A5 /* Assets.xcassets in Resources */,
+				D9ED28511C3F0E5100ECE9A5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,6 +401,51 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PerchBroadcastExample/Pods-PerchBroadcastExample-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D9ED28471C3F0E5100ECE9A5 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D9ED28521C3F0E5100ECE9A5 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PerchBroadcastExample/Pods-PerchBroadcastExample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D9ED28531C3F0E5100ECE9A5 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PerchBroadcastExample/Pods-PerchBroadcastExample-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -360,12 +468,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D9ED28481C3F0E5100ECE9A5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D9ED28491C3F0E5100ECE9A5 /* ViewController.m in Sources */,
+				D9ED285B1C3F0F8600ECE9A5 /* MockAPIClient.m in Sources */,
+				D9ED284A1C3F0E5100ECE9A5 /* AppDelegate.m in Sources */,
+				D9ED284B1C3F0E5100ECE9A5 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
 		D98477431C3C7759004DB872 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D98477271C3C7759004DB872 /* PerchBroadcastExample */;
+			target = D98477271C3C7759004DB872 /* Broadcast */;
 			targetProxy = D98477421C3C7759004DB872 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -478,6 +597,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PerchBroadcastExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.perchlive.PerchBroadcastExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -490,6 +610,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PerchBroadcastExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.perchlive.PerchBroadcastExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -522,6 +643,42 @@
 			};
 			name = Release;
 		};
+		D9ED28551C3F0E5100ECE9A5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F2E6AECFF89BF004037CD76C /* Pods-PerchBroadcastExample.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"BROADCAST_MOCK=1",
+				);
+				INFOPLIST_FILE = "PerchBroadcastExample copy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.perchlive.PerchBroadcastExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		D9ED28561C3F0E5100ECE9A5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 799630B15142BE1FF3A7728D /* Pods-PerchBroadcastExample.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"BROADCAST_MOCK=1",
+				);
+				INFOPLIST_FILE = "PerchBroadcastExample copy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.perchlive.PerchBroadcastExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -534,7 +691,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D984774A1C3C7759004DB872 /* Build configuration list for PBXNativeTarget "PerchBroadcastExample" */ = {
+		D984774A1C3C7759004DB872 /* Build configuration list for PBXNativeTarget "Broadcast" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D984774B1C3C7759004DB872 /* Debug */,
@@ -543,11 +700,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D984774D1C3C7759004DB872 /* Build configuration list for PBXNativeTarget "PerchBroadcastExampleTests" */ = {
+		D984774D1C3C7759004DB872 /* Build configuration list for PBXNativeTarget "PerchBroadcastTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D984774E1C3C7759004DB872 /* Debug */,
 				D984774F1C3C7759004DB872 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D9ED28541C3F0E5100ECE9A5 /* Build configuration list for PBXNativeTarget "BroadcastMock" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D9ED28551C3F0E5100ECE9A5 /* Debug */,
+				D9ED28561C3F0E5100ECE9A5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <AWSCore/AWSCore.h>
-#import "KFS3Stream.h"
+#import "BroadcastS3Endpoint.h"
 
 @interface KFAWSCredentialsProvider : NSObject <AWSCredentialsProvider>
 
@@ -41,7 +41,7 @@
  */
 - (AWSTask *)refresh;
 
-- (instancetype)initWithStream:(KFS3Stream*)stream;
+- (instancetype)initWithEndpoint:(id<BroadcastS3Endpoint>)endpoint;
 
 /** Utility to convert from "us-west-1" to enum AWSRegionUSWest1 */
 + (AWSRegionType) regionTypeForRegion:(NSString*)region;

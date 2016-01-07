@@ -7,6 +7,7 @@
 //
 
 #import "KFRecordButton.h"
+#import "NSBundle+Perch.h"
 
 @interface KFRecordButton()
 @property (nonatomic, strong) UIImage *startImage;
@@ -18,12 +19,12 @@
 
 - (instancetype) initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        UIImage *image = [UIImage imageNamed:@"KFRecordButtonStart"];
+        UIImage *image = [UIImage imageNamed:@"KFRecordButtonStart" inBundle:[NSBundle perchBundle] compatibleWithTraitCollection:nil];
         self.startImage = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         [self setImage:self.startImage
                      forState:UIControlStateNormal];
         
-        image = [UIImage imageNamed:@"KFRecordButtonStop"];
+        image = [UIImage imageNamed:@"KFRecordButtonStop" inBundle:[NSBundle perchBundle] compatibleWithTraitCollection:nil];
         self.stopImage = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         
         self.tintColor = [UIColor redColor];
@@ -36,7 +37,8 @@
 }
 
 - (void) setupOuterImage {
-    self.outerImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"KFRecordButtonBorder"]];
+    UIImage *image = [UIImage imageNamed:@"KFRecordButtonBorder" inBundle:[NSBundle perchBundle] compatibleWithTraitCollection:nil];
+    self.outerImageView = [[UIImageView alloc] initWithImage:image];
     self.outerImageView.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:self.outerImageView];
 }

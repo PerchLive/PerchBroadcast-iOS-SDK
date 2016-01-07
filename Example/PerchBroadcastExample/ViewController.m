@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "KFBroadcastViewController.h"
 #import "PerchAPIClient.h"
+#import "MockAPIClient.h"
 
 @interface ViewController ()
 
@@ -27,7 +28,12 @@
 }
 
 - (IBAction)startButtonPressed:(id)sender {
-    PerchAPIClient *apiClient = [[PerchAPIClient alloc] initWithBaseURL:[NSURL URLWithString:@"https://perchlive.com/api/"]];
-    KFBroadcastViewController *broadcaster = [[KFBroadcastViewController alloc] initWithAPIClient:apiClient]; 
+#if BROADCAST_MOCK
+    MockAPIClient *apiClient = [[MockAPIClient alloc] init];
+#else
+    PerchAPIClient *apiClient = [[PerchAPIClient alloc] initWithBaseURL:[NSURL URLWithString:@"https://perchlive.com/api/v1/"]];
+#endif
+    KFBroadcastViewController *broadcaster = [[KFBroadcastViewController alloc] initWithAPIClient:apiClient];
+    [self presentViewController:broadcaster animated:YES completion:nil];
 }
 @end

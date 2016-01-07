@@ -17,8 +17,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D98477401C3C7759004DB872"
-               BuildableName = "PerchBroadcastExampleTests.xctest"
-               BlueprintName = "PerchBroadcastExampleTests"
+               BuildableName = "PerchBroadcastTests.xctest"
+               BlueprintName = "PerchBroadcastTests"
                ReferencedContainer = "container:PerchBroadcastExample.xcodeproj">
             </BuildableReference>
          </TestableReference>

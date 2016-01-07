@@ -12,6 +12,7 @@
 #import "KFUser.h"
 #import "KFLog.h"
 #import "PureLayout.h"
+#import "NSBundle+Perch.h"
 
 @implementation KFBroadcastViewController
 
@@ -83,7 +84,8 @@
 }
 
 - (void) setupRotationImageView {
-    self.rotationImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"KFDeviceRotation"]];
+    UIImage *image = [UIImage imageNamed:@"KFDeviceRotation" inBundle:[NSBundle perchBundle] compatibleWithTraitCollection:nil];
+    self.rotationImageView = [[UIImageView alloc] initWithImage:image];
     self.rotationImageView.translatesAutoresizingMaskIntoConstraints = NO;
     self.rotationImageView.transform = CGAffineTransformMakeRotation(90./180.*M_PI);
     [self.view addSubview:self.rotationImageView];
@@ -112,7 +114,7 @@
 }
 
 - (void) shareButtonPressed:(id)sender {
-    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[self.recorder.stream.kickflipURL] applicationActivities:nil];
+    /*UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[self.recorder.stream.kickflipURL] applicationActivities:nil];
     
     UIActivityViewControllerCompletionHandler completionHandler = ^(NSString *activityType, BOOL completed) {
         NSLog(@"share activity: %@", activityType);
@@ -120,6 +122,7 @@
     activityViewController.completionHandler = completionHandler;
     
     [self presentViewController:activityViewController animated:YES completion:nil];
+     */
 }
 
 - (void)viewDidLoad

@@ -40,7 +40,7 @@
 @property (nonatomic, strong) KFAACEncoder *aacEncoder;
 @property (nonatomic, strong) KFH264Encoder *h264Encoder;
 @property (nonatomic, strong) KFHLSWriter *hlsWriter;
-@property (nonatomic, strong) KFStream *stream;
+@property (nonatomic, strong) id<BroadcastStream> stream;
 @property (nonatomic, strong) id<BroadcastAPIClient> apiClient;
 
 @property (nonatomic) NSUInteger videoWidth;

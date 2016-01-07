@@ -11,12 +11,12 @@
 
 @implementation KFAWSCredentialsProvider
 
-- (instancetype)initWithStream:(KFS3Stream*)stream {
+- (instancetype)initWithEndpoint:(id<BroadcastS3Endpoint>)endpoint {
     if (self = [super init]) {
-        _accessKey = stream.awsAccessKey;
-        _secretKey = stream.awsSecretKey;
-        _sessionKey = stream.awsSessionToken;
-        _expiration = stream.awsExpirationDate;
+        _accessKey = endpoint.awsAccessKey;
+        _secretKey = endpoint.awsSecretKey;
+        _sessionKey = endpoint.awsSessionToken;
+        _expiration = endpoint.awsExpirationDate;
     }
     return self;
 }

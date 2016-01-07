@@ -18,7 +18,7 @@
  *  @param streamURL URL to the streamable m3u8
  *  @see presentBroadcasterFromViewController:ready:completion:
  */
-typedef void (^KFBroadcastReadyBlock)(KFStream *stream);
+typedef void (^KFBroadcastReadyBlock)(id<BroadcastStream> stream);
 
 /**
  *  Block executed when completed live broadcast

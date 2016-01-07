@@ -11,6 +11,7 @@
 #import "PureLayout.h"
 #import "KFDateUtils.h"
 #import "UIImageView+WebCache.h"
+#import "NSBundle+Perch.h"
 
 static const NSUInteger kKFStreamTableViewCellLabelHeight = 20.0f;
 static const NSUInteger kKFStreamTableViewCellPadding = 5.0f;
@@ -64,7 +65,7 @@ static NSString * const KFStreamTableViewCellIdentifier = @"KFStreamTableViewCel
 - (void) setupActionButton {
     self.actionButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.actionButton.translatesAutoresizingMaskIntoConstraints = NO;
-    UIImage *buttonImage = [UIImage imageNamed:@"KFStreamTableViewCellDots"];
+    UIImage *buttonImage = [UIImage imageNamed:@"KFStreamTableViewCellDots" inBundle:[NSBundle perchBundle] compatibleWithTraitCollection:nil];
     [self.actionButton setImage:buttonImage forState:UIControlStateNormal];
     [self.actionButton addTarget:self action:@selector(actionButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:self.actionButton];
