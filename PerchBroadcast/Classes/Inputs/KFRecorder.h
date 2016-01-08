@@ -47,6 +47,22 @@
 @property (nonatomic) NSUInteger videoHeight;
 @property (nonatomic) NSUInteger audioSampleRate;
 
+
+/**
+ *  Sets max bitrate (in bits per second).
+ *
+ *  @note Defaults to 2 Mbps
+ *  @param maxBitrate Maximum bitrate for combined video+audio
+ *  @warn Do not set this value to lower than ~300 Kbps
+ */
+@property (nonatomic) double maxBitrate;
+
+/**
+ *  Whether or not to actively adjust the bitrate to network conditions.
+ *  @note Defaults to YES
+ */
+@property (nonatomic) BOOL useAdaptiveBitrate;
+
 @property (nonatomic) BOOL isRecording;
 
 @property (nonatomic, weak) id<KFRecorderDelegate> delegate;

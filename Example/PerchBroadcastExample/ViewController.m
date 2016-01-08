@@ -31,7 +31,12 @@
 #if BROADCAST_MOCK
     MockAPIClient *apiClient = [[MockAPIClient alloc] init];
 #else
-    PerchAPIClient *apiClient = [[PerchAPIClient alloc] initWithBaseURL:[NSURL URLWithString:@"https://perchlive.com/api/v1/"]];
+    //PerchAPIClient *apiClient = [[PerchAPIClient alloc] initWithBaseURL:[NSURL URLWithString:@"https://perchlive.com/api/v1/"]];
+    PerchAPIClient *apiClient = [[PerchAPIClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://10.11.41.186:8000/api/"]];
+    [apiClient createUserWithEmail:@"asdf@asdf.com" password:@"asdf" callbackBlock:^(NSString *apiToken, NSError *error) {
+        NSLog(@"token: %@", apiToken);
+    }];
+
 #endif
     KFBroadcastViewController *broadcaster = [[KFBroadcastViewController alloc] initWithAPIClient:apiClient];
     [self presentViewController:broadcaster animated:YES completion:nil];

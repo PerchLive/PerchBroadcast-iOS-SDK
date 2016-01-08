@@ -7,6 +7,8 @@
 //
 
 #import "PerchS3Endpoint.h"
+#import "KFDateUtils.h"
+
 
 @implementation PerchS3Endpoint
 @synthesize bucketName;
@@ -29,7 +31,7 @@
  'aws_access_key_id': 'key'
  'aws_secret_access_key': 'secret',
  'aws_session_token': 'token',
- 'aws_expiration': 3600.0 // in seconds
+ 'aws_expiration': '2015-10-22 15:27:40',
  'aws_bucket_name': 'bucket',
  'aws_bucket_path': 'path',
  'aws_region': 'us-west-1' // valid amazon region string
@@ -46,6 +48,14 @@
              NSStringFromSelector(@selector(awsPrefix)): @"S3.aws_bucket_path",
              NSStringFromSelector(@selector(awsRegion)): @"S3.aws_region",
              };
+}
+
++ (NSValueTransformer *)awsExpirationDateJSONTransformer {
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSString *str) {
+        return [[KFDateUtils utcDateFormatter] dateFromString:str];
+    } reverseBlock:^(NSDate *date) {
+        return [[KFDateUtils utcDateFormatter] stringFromDate:date];
+    }];
 }
 
 @end

@@ -8,8 +8,24 @@
 
 #import <UIKit/UIKit.h>
 #import "KFRecorder.h"
-#import "Kickflip.h"
 #import "KFRecordButton.h"
+
+/**
+ *  Block executed when stream is ready.
+ *
+ *  @param streamURL URL to the streamable m3u8
+ *  @see presentBroadcasterFromViewController:ready:completion:
+ */
+typedef void (^KFBroadcastReadyBlock)(id<BroadcastStream> stream);
+
+/**
+ *  Block executed when completed live broadcast
+ *
+ *  @param success Whether or not broadcast was successful
+ *  @param error   Any error that occurred
+ *  @see presentBroadcasterFromViewController:ready:completion:
+ */
+typedef void (^KFBroadcastCompletionBlock)(BOOL success, NSError* error);
 
 /**
  *  This is the main broadcast user interface that presents a start/stop button

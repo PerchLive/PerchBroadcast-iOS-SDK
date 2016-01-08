@@ -11,7 +11,6 @@
 #import "KFLog.h"
 #import "KFUser.h"
 #import "KFS3Stream.h"
-#import "Kickflip.h"
 
 static NSString* const kKFAPIClientErrorDomain = @"kKFAPIClientErrorDomain";
 static NSString* const kKFBaseURL = @"https://kickflip.io/api/1.2";
@@ -27,9 +26,11 @@ static NSString* const kKFBaseURL = @"https://kickflip.io/api/1.2";
     return _sharedClient;
 }
 
-- (instancetype) init {
+- (instancetype) initWithAPIKey:(NSString *)apiKey apiSecret:(NSString *)apiSecret {
     NSURL *url = [NSURL URLWithString:kKFBaseURL];
     if (self = [super initWithBaseURL:url]) {
+        _apiKey = apiKey;
+        _apiSecret = apiSecret;
         [self checkOAuthCredentialsWithCallback:nil];
     }
     return self;
@@ -38,17 +39,16 @@ static NSString* const kKFBaseURL = @"https://kickflip.io/api/1.2";
 - (void) checkOAuthCredentialsWithCallback:(void (^)(BOOL success, NSError * error))callback {
     callback(YES, nil);
     
-    // Punt on authorization design
-    /*if ([self.requestSerializer valueForHTTPHeaderField:@"Authorization"] != nil) {
+    if ([self.requestSerializer valueForHTTPHeaderField:@"Authorization"] != nil) {
         if (callback) {
             callback(YES, nil);
         }
         return;
     }
     NSURL *url = self.baseURL;
-    NSString *apiKey = [Kickflip apiKey];
-    NSString *apiSecret = [Kickflip apiSecret];
-    NSAssert(apiKey != nil && apiSecret != nil, @"Missing API key and secret. Call [Kickflip setupWithAPIKey:secret:] with your credentials obtained from kickflip.io");
+    NSString *apiKey = self.apiKey;
+    NSString *apiSecret = self.apiSecret;
+    NSAssert(apiKey != nil && apiSecret != nil, @"Missing API key and secret. Call initWithAPIKey:apiSecret: with your credentials obtained from kickflip.io");
 
     AFOAuth2Manager *oauthClient = [[AFOAuth2Manager alloc] initWithBaseURL:url clientID:apiKey secret:apiSecret];
     
@@ -72,7 +72,6 @@ static NSString* const kKFBaseURL = @"https://kickflip.io/api/1.2";
             callback(NO, error);
         }
     }];
-     */
 }
 
 - (void) setAuthorizationHeaderWithCredential:(AFOAuthCredential*)credential {

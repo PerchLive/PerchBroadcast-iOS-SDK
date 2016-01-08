@@ -11,6 +11,80 @@
 
 @implementation PerchAPIClient
 
+- (NSError *) errorWithCode:(int)code description:(NSString*)description {
+    NSParameterAssert(description != nil);
+    return [NSError errorWithDomain:@"com.perchlive.Perch" code:code userInfo:@{NSLocalizedDescriptionKey: description}];
+}
+
+// e.g. Authorization: Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b
+- (void) setApiToken:(NSString *)apiToken {
+    _apiToken = apiToken;
+    [self.requestSerializer setValue:[NSString stringWithFormat:@"Token %@", apiToken] forHTTPHeaderField:@"Authorization"];
+}
+
+- (void) fetchAPITokenWithEmail:(NSString*)email
+                   password:(NSString*)password
+              callbackBlock:(void (^)(NSString *apiToken, NSError *error))callbackBlock {
+    [self POST:@"authenticate"
+    parameters:@{@"email": email,
+                 @"password": password}
+       success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+           if ([responseObject isKindOfClass:[NSDictionary class]]) {
+               NSDictionary *responseDict = responseObject;
+               NSString *token = responseDict[@"token"];
+               self.apiToken = token;
+               callbackBlock(token, nil);
+           } else {
+               callbackBlock(nil, [self errorWithCode:1 description:@"No token"]);
+           }
+       }
+       failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+           callbackBlock(nil, error);
+    }];
+}
+
+/**
+ *  Requests new API token associated with a user.
+ *
+ *  @param email User's email address
+ *  @param password User's password
+ *  @param callbackBlock called when the request completes with either an active user token or an error
+ */
+- (void) loginUserWithEmail:(NSString*)email
+                   password:(NSString*)password
+              callbackBlock:(void (^)(NSString *apiToken, NSError *error))callbackBlock {
+    [self POST:@"user/login"
+    parameters:@{@"email": email,
+                 @"password": password}
+       success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+           [self fetchAPITokenWithEmail:email password:password callbackBlock:callbackBlock];
+       }
+       failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+           callbackBlock(nil, error);
+       }];
+}
+/**
+ *  Requests new user from Perch server.
+ *
+ *  @param email User's email address
+ *  @param password User's password
+ *  @param callbackBlock called when the request completes with either an active user token or an error
+ */
+- (void) createUserWithEmail:(NSString*)email
+                    password:(NSString*)password
+               callbackBlock:(void (^)(NSString *apiToken, NSError *error))callbackBlock {
+    [self POST:@"user/signup"
+    parameters:@{@"email": email,
+                 @"password": password}
+       success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+           [self fetchAPITokenWithEmail:email password:password callbackBlock:callbackBlock];
+       }
+       failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+           callbackBlock(nil, error);
+       }];
+}
+
+
 /* start stream
 {
     'stream' : {

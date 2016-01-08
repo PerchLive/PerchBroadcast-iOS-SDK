@@ -9,6 +9,7 @@
 #import "PerchStream.h"
 #import "PerchEndpoint.h"
 #import "NSValueTransformer+MTLPredefinedTransformerAdditions.h"
+#import "KFDateUtils.h"
 
 @implementation PerchStream
 @synthesize name, streamID, startDate, endpoint, stopDate;
@@ -44,6 +45,22 @@
 
 + (NSValueTransformer *)endpointJSONTransformer {
     return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:PerchEndpoint.class];
+}
+
++ (NSValueTransformer *)startDateJSONTransformer {
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSString *str) {
+        return [[KFDateUtils utcDateFormatter] dateFromString:str];
+    } reverseBlock:^(NSDate *date) {
+        return [[KFDateUtils utcDateFormatter] stringFromDate:date];
+    }];
+}
+
++ (NSValueTransformer *)stopDateJSONTransformer {
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSString *str) {
+        return [[KFDateUtils utcDateFormatter] dateFromString:str];
+    } reverseBlock:^(NSDate *date) {
+        return [[KFDateUtils utcDateFormatter] stringFromDate:date];
+    }];
 }
 
 @end

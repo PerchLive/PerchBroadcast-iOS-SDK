@@ -142,4 +142,10 @@
 @end
 
 @interface KFAPIClient : AFHTTPSessionManager <KFAPIClient>
+
+@property (nonatomic, strong, readonly) NSString *apiKey;
+@property (nonatomic, strong, readonly) NSString *apiSecret;
+
+- (instancetype) initWithAPIKey:(NSString*)apiKey apiSecret:(NSString*)apiSecret;
+
 @end

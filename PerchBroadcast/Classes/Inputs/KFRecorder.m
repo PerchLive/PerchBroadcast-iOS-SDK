@@ -17,7 +17,6 @@
 #import "KFS3Stream.h"
 #import "KFFrame.h"
 #import "KFVideoFrame.h"
-#import "Kickflip.h"
 #import "Endian.h"
 
 @interface KFRecorder()
@@ -41,6 +40,8 @@
         _apiClient = apiClient;
         _hlsMonitor = [[KFHLSMonitor alloc] initWithAPIClient:apiClient];
         _minBitrate = 300 * 1000;
+        _maxBitrate = 2000 * 1000;
+        _useAdaptiveBitrate = YES;
         [self setupSession];
         [self setupEncoders];
     }
@@ -74,7 +75,7 @@
     self.videoHeight = 720;
     self.videoWidth = 1280;
     int audioBitrate = 64 * 1000; // 64 Kbps
-    int maxBitrate = [Kickflip maxBitrate];
+    int maxBitrate = self.maxBitrate;
     int videoBitrate = maxBitrate - audioBitrate;
     _h264Encoder = [[KFH264Encoder alloc] initWithBitrate:videoBitrate width:self.videoWidth height:self.videoHeight];
     _h264Encoder.delegate = self;
@@ -332,9 +333,9 @@
 
 - (void) uploader:(KFHLSUploader *)uploader didUploadSegmentAtURL:(NSURL *)segmentURL uploadSpeed:(double)uploadSpeed numberOfQueuedSegments:(NSUInteger)numberOfQueuedSegments {
     DDLogInfo(@"Uploaded segment %@ @ %f KB/s, numberOfQueuedSegments %d", segmentURL, uploadSpeed, numberOfQueuedSegments);
-    if ([Kickflip useAdaptiveBitrate]) {
+    if (self.useAdaptiveBitrate) {
         double currentUploadBitrate = uploadSpeed * 8 * 1024; // bps
-        double maxBitrate = [Kickflip maxBitrate];
+        double maxBitrate = self.maxBitrate;
 
         double newBitrate = currentUploadBitrate * 0.5;
         if (newBitrate > maxBitrate) {
