@@ -34,4 +34,18 @@
 - (void) createUserWithEmail:(NSString*)email
                     password:(NSString*)password
                callbackBlock:(void (^)(NSString *apiToken, NSError *error))callbackBlock;
+
+/**
+ *  Requests new lens from Perch server.
+ *
+ *  @param name Lens name
+ *  @param location optional
+ *  @param categoryId this is a databaseId
+ *  @param callbackBlock called when the request completes with either an active user token or an error
+ */
+- (void) createLensWithName:(NSString*)name
+                   location:(CLLocation*)location
+                 categoryId:(NSString*)categoryId
+               callbackBlock:(void (^)(NSString *lensId, NSError *error))callbackBlock;
+
 @end

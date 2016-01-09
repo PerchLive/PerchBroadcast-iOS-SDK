@@ -40,13 +40,13 @@
  }
  }*/
 + (NSDictionary*) JSONKeyPathsByPropertyKey {
-    return @{NSStringFromSelector(@selector(bucketName)): @"S3.aws_bucket_name",
+    return @{NSStringFromSelector(@selector(bucketName)): @"S3.s3_bucket_name",
              NSStringFromSelector(@selector(awsAccessKey)): @"S3.aws_access_key_id",
              NSStringFromSelector(@selector(awsSecretKey)): @"S3.aws_secret_access_key",
              NSStringFromSelector(@selector(awsSessionToken)): @"S3.aws_session_token",
              NSStringFromSelector(@selector(awsExpirationDate)): @"S3.aws_expiration",
-             NSStringFromSelector(@selector(awsPrefix)): @"S3.aws_bucket_path",
-             NSStringFromSelector(@selector(awsRegion)): @"S3.aws_region",
+             NSStringFromSelector(@selector(awsPrefix)): @"S3.s3_bucket_path",
+             NSStringFromSelector(@selector(awsRegion)): @"S3.s3_bucket_region",
              };
 }
 

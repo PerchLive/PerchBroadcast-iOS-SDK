@@ -27,14 +27,30 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (NSString*) randomUsername {
+    NSString *alphabet  = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXZY0123456789";
+    NSMutableString *s = [NSMutableString stringWithCapacity:20];
+    for (NSUInteger i = 0U; i < 20; i++) {
+        u_int32_t r = arc4random() % [alphabet length];
+        unichar c = [alphabet characterAtIndex:r];
+        [s appendFormat:@"%C", c];
+    }
+    return s;
+}
+
 - (IBAction)startButtonPressed:(id)sender {
 #if BROADCAST_MOCK
     MockAPIClient *apiClient = [[MockAPIClient alloc] init];
 #else
     //PerchAPIClient *apiClient = [[PerchAPIClient alloc] initWithBaseURL:[NSURL URLWithString:@"https://perchlive.com/api/v1/"]];
     PerchAPIClient *apiClient = [[PerchAPIClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://10.11.41.186:8000/api/"]];
-    [apiClient createUserWithEmail:@"asdf@asdf.com" password:@"asdf" callbackBlock:^(NSString *apiToken, NSError *error) {
-        NSLog(@"token: %@", apiToken);
+    NSString *email = [NSString stringWithFormat:@"%@@asdf.com", [self randomUsername]];
+    [apiClient createUserWithEmail:email password:@"asdf" callbackBlock:^(NSString *apiToken, NSError *error) {
+        if (apiToken) {
+            NSLog(@"token: %@", apiToken);
+        } else {
+            NSLog(@"error: %@", error);
+        }
     }];
 
 #endif

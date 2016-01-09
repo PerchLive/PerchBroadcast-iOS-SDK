@@ -22,10 +22,17 @@
     [self.requestSerializer setValue:[NSString stringWithFormat:@"Token %@", apiToken] forHTTPHeaderField:@"Authorization"];
 }
 
-- (void) fetchAPITokenWithEmail:(NSString*)email
+/**
+ *  Requests new API token associated with a user.
+ *
+ *  @param email User's email address
+ *  @param password User's password
+ *  @param callbackBlock called when the request completes with either an active user token or an error
+ */
+- (void) loginUserWithEmail:(NSString*)email
                    password:(NSString*)password
               callbackBlock:(void (^)(NSString *apiToken, NSError *error))callbackBlock {
-    [self POST:@"authenticate"
+    [self POST:@"user/login/"
     parameters:@{@"email": email,
                  @"password": password}
        success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
@@ -37,27 +44,6 @@
            } else {
                callbackBlock(nil, [self errorWithCode:1 description:@"No token"]);
            }
-       }
-       failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-           callbackBlock(nil, error);
-    }];
-}
-
-/**
- *  Requests new API token associated with a user.
- *
- *  @param email User's email address
- *  @param password User's password
- *  @param callbackBlock called when the request completes with either an active user token or an error
- */
-- (void) loginUserWithEmail:(NSString*)email
-                   password:(NSString*)password
-              callbackBlock:(void (^)(NSString *apiToken, NSError *error))callbackBlock {
-    [self POST:@"user/login"
-    parameters:@{@"email": email,
-                 @"password": password}
-       success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
-           [self fetchAPITokenWithEmail:email password:password callbackBlock:callbackBlock];
        }
        failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
            callbackBlock(nil, error);
@@ -73,11 +59,18 @@
 - (void) createUserWithEmail:(NSString*)email
                     password:(NSString*)password
                callbackBlock:(void (^)(NSString *apiToken, NSError *error))callbackBlock {
-    [self POST:@"user/signup"
+    [self POST:@"user/signup/"
     parameters:@{@"email": email,
                  @"password": password}
        success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
-           [self fetchAPITokenWithEmail:email password:password callbackBlock:callbackBlock];
+           if ([responseObject isKindOfClass:[NSDictionary class]]) {
+               NSDictionary *responseDict = responseObject;
+               NSString *token = responseDict[@"token"];
+               self.apiToken = token;
+               callbackBlock(token, nil);
+           } else {
+               callbackBlock(nil, [self errorWithCode:1 description:@"No token"]);
+           }
        }
        failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
            callbackBlock(nil, error);
@@ -116,7 +109,9 @@
  */
 - (void) startNewStream:(void (^)(id <BroadcastStream> newStream, NSError *error))endpointCallback {
     NSParameterAssert(endpointCallback != nil);
-    [self POST:@"stream/start" parameters:@{@"type": @"hls"} success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+    [self POST:@"start_stream/" parameters:@{@"type": @"hls",
+                                             @"name": [[NSUUID UUID] UUIDString]}
+       success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
         NSError *error = nil;
         PerchStream *stream = [MTLJSONAdapter modelOfClass:PerchStream.class fromJSONDictionary:responseObject error:&error];
         endpointCallback(stream, error);
@@ -132,7 +127,7 @@
  *  @param callbackBlock (optional) whether or not this was successful
  */
 - (void) stopStream:(id <BroadcastStream>)stream callbackBlock:(void (^)(BOOL success, NSError *error))callbackBlock {
-    [self POST:@"stream/stop" parameters:@{@"id": stream.streamID} success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+    [self POST:@"stop_stream/" parameters:@{@"id": stream.streamID} success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
         NSError *error = nil;
         PerchStream *stream = [MTLJSONAdapter modelOfClass:PerchStream.class fromJSONDictionary:responseObject error:&error];
         if (callbackBlock) {
@@ -143,6 +138,21 @@
             callbackBlock(nil, error);
         }
     }];
+}
+
+/**
+ *  Requests new lens from Perch server.
+ *
+ *  @param name Lens name
+ *  @param location optional
+ *  @param categoryId this is a databaseId
+ *  @param callbackBlock called when the request completes with either an active user token or an error
+ */
+- (void) createLensWithName:(NSString*)name
+                   location:(CLLocation*)location
+                 categoryId:(NSString*)categoryId
+              callbackBlock:(void (^)(NSString *lensId, NSError *error))callbackBlock {
+    
 }
 
 @end
