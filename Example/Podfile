@@ -1,12 +1,15 @@
 source 'https://github.com/CocoaPods/Specs.git'
 #use_frameworks!
 
-target 'PerchBroadcastExample', :exclusive => true do
+target 'Broadcast', :exclusive => true do
   pod "PerchBroadcast", :path => "../"
 end
 
-target 'PerchBroadcastExampleTests', :exclusive => true do
+target 'BroadcastMock', :exclusive => true do
+  pod "PerchBroadcast", :path => "../"
+end
+
+target 'PerchBroadcastTests', :exclusive => true do
   pod "PerchBroadcast", :path => "../"
   pod 'URLMock', '~> 1.3.1'
-  
 end

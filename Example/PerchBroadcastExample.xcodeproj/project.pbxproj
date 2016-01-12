@@ -7,8 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		51BDCEA56005DF8A225640D2 /* libPods-Broadcast.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A173738892CAD0202596E92 /* libPods-Broadcast.a */; };
 		5A672C94CE0699C38AC5241F /* libPods-PerchBroadcastExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B2FCEB3EBD9A13907433313F /* libPods-PerchBroadcastExample.a */; };
+		77FC74950D3A68F11C4F0855 /* libPods-PerchBroadcastTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AD2C57D55186303476776FE /* libPods-PerchBroadcastTests.a */; };
 		8AF5EF9C51ED1916744CFBFE /* libPods-PerchBroadcastExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78E449AF0F398C8CFE3569D5 /* libPods-PerchBroadcastExampleTests.a */; };
+		A0C54DF2B863C97B34CA817E /* libPods-BroadcastMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E84F2D1C5261A3CDFE342CA3 /* libPods-BroadcastMock.a */; };
+		D9618A461C45BD170051B63A /* PerchAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D9618A3F1C45BD170051B63A /* PerchAPIClient.m */; };
+		D9618A471C45BD170051B63A /* PerchAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D9618A3F1C45BD170051B63A /* PerchAPIClient.m */; };
+		D9618A481C45BD170051B63A /* PerchAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D9618A3F1C45BD170051B63A /* PerchAPIClient.m */; };
+		D9618A491C45BD170051B63A /* PerchEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = D9618A411C45BD170051B63A /* PerchEndpoint.m */; };
+		D9618A4A1C45BD170051B63A /* PerchEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = D9618A411C45BD170051B63A /* PerchEndpoint.m */; };
+		D9618A4B1C45BD170051B63A /* PerchEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = D9618A411C45BD170051B63A /* PerchEndpoint.m */; };
+		D9618A4C1C45BD170051B63A /* PerchS3Endpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = D9618A431C45BD170051B63A /* PerchS3Endpoint.m */; };
+		D9618A4D1C45BD170051B63A /* PerchS3Endpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = D9618A431C45BD170051B63A /* PerchS3Endpoint.m */; };
+		D9618A4E1C45BD170051B63A /* PerchS3Endpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = D9618A431C45BD170051B63A /* PerchS3Endpoint.m */; };
+		D9618A4F1C45BD170051B63A /* PerchStream.m in Sources */ = {isa = PBXBuildFile; fileRef = D9618A451C45BD170051B63A /* PerchStream.m */; };
+		D9618A501C45BD170051B63A /* PerchStream.m in Sources */ = {isa = PBXBuildFile; fileRef = D9618A451C45BD170051B63A /* PerchStream.m */; };
+		D9618A511C45BD170051B63A /* PerchStream.m in Sources */ = {isa = PBXBuildFile; fileRef = D9618A451C45BD170051B63A /* PerchStream.m */; };
 		D984772D1C3C7759004DB872 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D984772C1C3C7759004DB872 /* main.m */; };
 		D98477301C3C7759004DB872 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D984772F1C3C7759004DB872 /* AppDelegate.m */; };
 		D98477331C3C7759004DB872 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D98477321C3C7759004DB872 /* ViewController.m */; };
@@ -38,11 +53,25 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00097BC855DECBC7ECEBCF14 /* Pods-PerchBroadcastTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PerchBroadcastTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PerchBroadcastTests/Pods-PerchBroadcastTests.debug.xcconfig"; sourceTree = "<group>"; };
+		24768CB052737207E6DDFFE9 /* Pods-Broadcast.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Broadcast.release.xcconfig"; path = "Pods/Target Support Files/Pods-Broadcast/Pods-Broadcast.release.xcconfig"; sourceTree = "<group>"; };
+		27FAEECA55187A5119426E34 /* Pods-Broadcast.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Broadcast.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Broadcast/Pods-Broadcast.debug.xcconfig"; sourceTree = "<group>"; };
 		48440D516C25A37A9692618F /* Pods-PerchBroadcastExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PerchBroadcastExampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PerchBroadcastExampleTests/Pods-PerchBroadcastExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5A173738892CAD0202596E92 /* libPods-Broadcast.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Broadcast.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78E449AF0F398C8CFE3569D5 /* libPods-PerchBroadcastExampleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PerchBroadcastExampleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		799630B15142BE1FF3A7728D /* Pods-PerchBroadcastExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PerchBroadcastExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-PerchBroadcastExample/Pods-PerchBroadcastExample.release.xcconfig"; sourceTree = "<group>"; };
+		98F5C128B4B285B4BFC87AE2 /* Pods-BroadcastMock.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BroadcastMock.release.xcconfig"; path = "Pods/Target Support Files/Pods-BroadcastMock/Pods-BroadcastMock.release.xcconfig"; sourceTree = "<group>"; };
+		9AD2C57D55186303476776FE /* libPods-PerchBroadcastTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PerchBroadcastTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2FCEB3EBD9A13907433313F /* libPods-PerchBroadcastExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PerchBroadcastExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B98A762ECBDA800148DD5D6E /* Pods-PerchBroadcastExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PerchBroadcastExampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PerchBroadcastExampleTests/Pods-PerchBroadcastExampleTests.release.xcconfig"; sourceTree = "<group>"; };
+		D9618A3E1C45BD170051B63A /* PerchAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PerchAPIClient.h; sourceTree = "<group>"; };
+		D9618A3F1C45BD170051B63A /* PerchAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PerchAPIClient.m; sourceTree = "<group>"; };
+		D9618A401C45BD170051B63A /* PerchEndpoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PerchEndpoint.h; sourceTree = "<group>"; };
+		D9618A411C45BD170051B63A /* PerchEndpoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PerchEndpoint.m; sourceTree = "<group>"; };
+		D9618A421C45BD170051B63A /* PerchS3Endpoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PerchS3Endpoint.h; sourceTree = "<group>"; };
+		D9618A431C45BD170051B63A /* PerchS3Endpoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PerchS3Endpoint.m; sourceTree = "<group>"; };
+		D9618A441C45BD170051B63A /* PerchStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PerchStream.h; sourceTree = "<group>"; };
+		D9618A451C45BD170051B63A /* PerchStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PerchStream.m; sourceTree = "<group>"; };
 		D98477281C3C7759004DB872 /* Broadcast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Broadcast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D984772C1C3C7759004DB872 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D984772E1C3C7759004DB872 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -61,7 +90,10 @@
 		D9ED28581C3F0E5100ECE9A5 /* PerchBroadcastExample copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "PerchBroadcastExample copy-Info.plist"; path = "/Users/chrisbal/Documents/Perch/PerchBroadcast-iOS-SDK/Example/PerchBroadcastExample copy-Info.plist"; sourceTree = "<absolute>"; };
 		D9ED28591C3F0F8600ECE9A5 /* MockAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MockAPIClient.h; sourceTree = "<group>"; };
 		D9ED285A1C3F0F8600ECE9A5 /* MockAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MockAPIClient.m; sourceTree = "<group>"; };
+		E272F11A4FEDD800F206CBA2 /* Pods-PerchBroadcastTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PerchBroadcastTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PerchBroadcastTests/Pods-PerchBroadcastTests.release.xcconfig"; sourceTree = "<group>"; };
+		E84F2D1C5261A3CDFE342CA3 /* libPods-BroadcastMock.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BroadcastMock.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2E6AECFF89BF004037CD76C /* Pods-PerchBroadcastExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PerchBroadcastExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PerchBroadcastExample/Pods-PerchBroadcastExample.debug.xcconfig"; sourceTree = "<group>"; };
+		FE84642C3A5D62392429F322 /* Pods-BroadcastMock.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BroadcastMock.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BroadcastMock/Pods-BroadcastMock.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +102,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A672C94CE0699C38AC5241F /* libPods-PerchBroadcastExample.a in Frameworks */,
+				51BDCEA56005DF8A225640D2 /* libPods-Broadcast.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +111,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8AF5EF9C51ED1916744CFBFE /* libPods-PerchBroadcastExampleTests.a in Frameworks */,
+				77FC74950D3A68F11C4F0855 /* libPods-PerchBroadcastTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +120,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9ED284D1C3F0E5100ECE9A5 /* libPods-PerchBroadcastExample.a in Frameworks */,
+				A0C54DF2B863C97B34CA817E /* libPods-BroadcastMock.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,6 +132,9 @@
 			children = (
 				B2FCEB3EBD9A13907433313F /* libPods-PerchBroadcastExample.a */,
 				78E449AF0F398C8CFE3569D5 /* libPods-PerchBroadcastExampleTests.a */,
+				5A173738892CAD0202596E92 /* libPods-Broadcast.a */,
+				E84F2D1C5261A3CDFE342CA3 /* libPods-BroadcastMock.a */,
+				9AD2C57D55186303476776FE /* libPods-PerchBroadcastTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -108,8 +146,29 @@
 				799630B15142BE1FF3A7728D /* Pods-PerchBroadcastExample.release.xcconfig */,
 				48440D516C25A37A9692618F /* Pods-PerchBroadcastExampleTests.debug.xcconfig */,
 				B98A762ECBDA800148DD5D6E /* Pods-PerchBroadcastExampleTests.release.xcconfig */,
+				27FAEECA55187A5119426E34 /* Pods-Broadcast.debug.xcconfig */,
+				24768CB052737207E6DDFFE9 /* Pods-Broadcast.release.xcconfig */,
+				FE84642C3A5D62392429F322 /* Pods-BroadcastMock.debug.xcconfig */,
+				98F5C128B4B285B4BFC87AE2 /* Pods-BroadcastMock.release.xcconfig */,
+				00097BC855DECBC7ECEBCF14 /* Pods-PerchBroadcastTests.debug.xcconfig */,
+				E272F11A4FEDD800F206CBA2 /* Pods-PerchBroadcastTests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		D9618A3D1C45BD170051B63A /* API */ = {
+			isa = PBXGroup;
+			children = (
+				D9618A3E1C45BD170051B63A /* PerchAPIClient.h */,
+				D9618A3F1C45BD170051B63A /* PerchAPIClient.m */,
+				D9618A401C45BD170051B63A /* PerchEndpoint.h */,
+				D9618A411C45BD170051B63A /* PerchEndpoint.m */,
+				D9618A421C45BD170051B63A /* PerchS3Endpoint.h */,
+				D9618A431C45BD170051B63A /* PerchS3Endpoint.m */,
+				D9618A441C45BD170051B63A /* PerchStream.h */,
+				D9618A451C45BD170051B63A /* PerchStream.m */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		D984771F1C3C7759004DB872 = {
@@ -137,6 +196,7 @@
 		D984772A1C3C7759004DB872 /* PerchBroadcastExample */ = {
 			isa = PBXGroup;
 			children = (
+				D9618A3D1C45BD170051B63A /* API */,
 				D9ED285C1C3F0F9100ECE9A5 /* Mock */,
 				D984772E1C3C7759004DB872 /* AppDelegate.h */,
 				D984772F1C3C7759004DB872 /* AppDelegate.m */,
@@ -323,7 +383,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PerchBroadcastExample/Pods-PerchBroadcastExample-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Broadcast/Pods-Broadcast-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		474F38A743573B26177B401D /* Check Pods Manifest.lock */ = {
@@ -353,7 +413,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PerchBroadcastExampleTests/Pods-PerchBroadcastExampleTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PerchBroadcastTests/Pods-PerchBroadcastTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		61DA5F33434868E50CD1E303 /* Embed Pods Frameworks */ = {
@@ -368,7 +428,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PerchBroadcastExampleTests/Pods-PerchBroadcastExampleTests-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PerchBroadcastTests/Pods-PerchBroadcastTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		7850CE2CFC99819F12490242 /* Check Pods Manifest.lock */ = {
@@ -398,7 +458,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PerchBroadcastExample/Pods-PerchBroadcastExample-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Broadcast/Pods-Broadcast-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D9ED28471C3F0E5100ECE9A5 /* Check Pods Manifest.lock */ = {
@@ -428,7 +488,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PerchBroadcastExample/Pods-PerchBroadcastExample-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BroadcastMock/Pods-BroadcastMock-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D9ED28531C3F0E5100ECE9A5 /* Copy Pods Resources */ = {
@@ -443,7 +503,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PerchBroadcastExample/Pods-PerchBroadcastExample-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BroadcastMock/Pods-BroadcastMock-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -454,8 +514,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D98477331C3C7759004DB872 /* ViewController.m in Sources */,
+				D9618A491C45BD170051B63A /* PerchEndpoint.m in Sources */,
 				D98477301C3C7759004DB872 /* AppDelegate.m in Sources */,
+				D9618A4F1C45BD170051B63A /* PerchStream.m in Sources */,
+				D9618A461C45BD170051B63A /* PerchAPIClient.m in Sources */,
 				D984772D1C3C7759004DB872 /* main.m in Sources */,
+				D9618A4C1C45BD170051B63A /* PerchS3Endpoint.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,7 +527,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9618A4D1C45BD170051B63A /* PerchS3Endpoint.m in Sources */,
 				D98477571C3C9002004DB872 /* PerchAPIClientTests.m in Sources */,
+				D9618A501C45BD170051B63A /* PerchStream.m in Sources */,
+				D9618A4A1C45BD170051B63A /* PerchEndpoint.m in Sources */,
+				D9618A471C45BD170051B63A /* PerchAPIClient.m in Sources */,
 				D98477461C3C7759004DB872 /* PerchBroadcastExampleTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -472,9 +540,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9618A4E1C45BD170051B63A /* PerchS3Endpoint.m in Sources */,
+				D9618A481C45BD170051B63A /* PerchAPIClient.m in Sources */,
 				D9ED28491C3F0E5100ECE9A5 /* ViewController.m in Sources */,
 				D9ED285B1C3F0F8600ECE9A5 /* MockAPIClient.m in Sources */,
+				D9618A4B1C45BD170051B63A /* PerchEndpoint.m in Sources */,
 				D9ED284A1C3F0E5100ECE9A5 /* AppDelegate.m in Sources */,
+				D9618A511C45BD170051B63A /* PerchStream.m in Sources */,
 				D9ED284B1C3F0E5100ECE9A5 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -593,7 +665,7 @@
 		};
 		D984774B1C3C7759004DB872 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F2E6AECFF89BF004037CD76C /* Pods-PerchBroadcastExample.debug.xcconfig */;
+			baseConfigurationReference = 27FAEECA55187A5119426E34 /* Pods-Broadcast.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PerchBroadcastExample/Info.plist;
@@ -606,7 +678,7 @@
 		};
 		D984774C1C3C7759004DB872 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 799630B15142BE1FF3A7728D /* Pods-PerchBroadcastExample.release.xcconfig */;
+			baseConfigurationReference = 24768CB052737207E6DDFFE9 /* Pods-Broadcast.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PerchBroadcastExample/Info.plist;
@@ -619,7 +691,7 @@
 		};
 		D984774E1C3C7759004DB872 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 48440D516C25A37A9692618F /* Pods-PerchBroadcastExampleTests.debug.xcconfig */;
+			baseConfigurationReference = 00097BC855DECBC7ECEBCF14 /* Pods-PerchBroadcastTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = PerchBroadcastExampleTests/Info.plist;
@@ -632,7 +704,7 @@
 		};
 		D984774F1C3C7759004DB872 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B98A762ECBDA800148DD5D6E /* Pods-PerchBroadcastExampleTests.release.xcconfig */;
+			baseConfigurationReference = E272F11A4FEDD800F206CBA2 /* Pods-PerchBroadcastTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = PerchBroadcastExampleTests/Info.plist;
@@ -645,7 +717,7 @@
 		};
 		D9ED28551C3F0E5100ECE9A5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F2E6AECFF89BF004037CD76C /* Pods-PerchBroadcastExample.debug.xcconfig */;
+			baseConfigurationReference = FE84642C3A5D62392429F322 /* Pods-BroadcastMock.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -663,7 +735,7 @@
 		};
 		D9ED28561C3F0E5100ECE9A5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 799630B15142BE1FF3A7728D /* Pods-PerchBroadcastExample.release.xcconfig */;
+			baseConfigurationReference = 98F5C128B4B285B4BFC87AE2 /* Pods-BroadcastMock.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PREPROCESSOR_DEFINITIONS = (
