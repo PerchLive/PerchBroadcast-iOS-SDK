@@ -220,6 +220,7 @@
 }
 
 - (void) startRecording {
+    [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
     [self.locationManager startUpdatingLocation];
@@ -293,6 +294,7 @@
 }
 
 - (void) stopRecording {
+    [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
     [self.locationManager stopUpdatingLocation];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         if (self.lastLocation) {
