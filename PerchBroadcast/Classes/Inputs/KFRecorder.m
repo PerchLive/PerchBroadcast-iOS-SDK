@@ -66,8 +66,10 @@
     [[NSFileManager defaultManager] createDirectoryAtPath:hlsDirectoryPath withIntermediateDirectories:YES attributes:nil error:nil];
     self.hlsWriter = [[KFHLSWriter alloc] initWithDirectoryPath:hlsDirectoryPath];
     [_hlsWriter addVideoStreamWithWidth:self.videoWidth height:self.videoHeight];
-    [_hlsWriter addAudioStreamWithSampleRate:self.audioSampleRate];
-
+    
+    if (!self.audioDisabled) {
+        [_hlsWriter addAudioStreamWithSampleRate:self.audioSampleRate];
+    }
 }
 
 - (void) setupEncoders {
@@ -80,9 +82,11 @@
     _h264Encoder = [[KFH264Encoder alloc] initWithBitrate:videoBitrate width:self.videoWidth height:self.videoHeight];
     _h264Encoder.delegate = self;
     
-    _aacEncoder = [[KFAACEncoder alloc] initWithBitrate:audioBitrate sampleRate:self.audioSampleRate channels:1];
-    _aacEncoder.delegate = self;
-    _aacEncoder.addADTSHeader = YES;
+    if (!self.audioDisabled) {
+        _aacEncoder = [[KFAACEncoder alloc] initWithBitrate:audioBitrate sampleRate:self.audioSampleRate channels:1];
+        _aacEncoder.delegate = self;
+        _aacEncoder.addADTSHeader = YES;
+    }
 }
 
 - (void) setupAudioCapture {
@@ -140,7 +144,7 @@
     if (encoder == _h264Encoder) {
         KFVideoFrame *videoFrame = (KFVideoFrame*)frame;
         [_hlsWriter processEncodedData:videoFrame.data presentationTimestamp:videoFrame.pts streamIndex:0 isKeyFrame:videoFrame.isKeyFrame];
-    } else if (encoder == _aacEncoder) {
+    } else if (encoder == _aacEncoder && !_audioDisabled) {
         [_hlsWriter processEncodedData:frame.data presentationTimestamp:frame.pts streamIndex:1 isKeyFrame:NO];
     }
 }
@@ -161,7 +165,7 @@
             _hasScreenshot = YES;
         }
         [_h264Encoder encodeSampleBuffer:sampleBuffer];
-    } else if (connection == _audioConnection) {
+    } else if (connection == _audioConnection && !_audioDisabled) {
         [_aacEncoder encodeSampleBuffer:sampleBuffer];
     }
 }
@@ -210,7 +214,10 @@
 - (void) setupSession {
     _session = [[AVCaptureSession alloc] init];
     [self setupVideoCapture];
-    [self setupAudioCapture];
+    
+    if (!self.audioDisabled) {
+        [self setupAudioCapture];
+    }
 
     // start capture and a preview layer
     [_session startRunning];
@@ -317,11 +324,11 @@
         if (error) {
             DDLogError(@"Error stop recording: %@", error);
         }
-        [self.apiClient stopStream:self.stream callbackBlock:^(BOOL success, NSError *error) {
-            if (!success) {
+        [self.apiClient stopStream:self.stream callbackBlock:^(id <BroadcastStream> stoppedStream, NSError *error) {
+            if (!stoppedStream) {
                 DDLogError(@"Error stopping stream: %@", error);
             } else {
-                DDLogVerbose(@"Stream stopped: %@", self.stream.streamID);
+                DDLogVerbose(@"Stream stopped: %@", stoppedStream.streamID);
             }
         }];
         [self.hlsMonitor finishUploadingContentsAtFolderPath:_hlsWriter.directoryPath stream:self.stream];

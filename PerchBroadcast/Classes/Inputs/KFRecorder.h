@@ -47,6 +47,11 @@
 @property (nonatomic) NSUInteger videoHeight;
 @property (nonatomic) NSUInteger audioSampleRate;
 
+/**
+ *  Property must be set before -startRecording is called to take effect
+ *  @note Defaults to NO
+ */
+@property (nonatomic) BOOL audioDisabled;
 
 /**
  *  Sets max bitrate (in bits per second).

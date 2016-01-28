@@ -31,7 +31,7 @@
  *  @param stream        stream to be stopped
  *  @param callbackBlock (optional) whether or not this was successful
  */
-- (void) stopStream:(id <BroadcastStream>)stream callbackBlock:(void (^)(BOOL success, NSError *error))callbackBlock;
+- (void) stopStream:(id <BroadcastStream>)stream callbackBlock:(void (^)(id <BroadcastStream> stoppedStream, NSError *error))callbackBlock;
 
 @optional
 
