@@ -20,14 +20,16 @@ typedef NS_ENUM(NSUInteger, KFHLSManifestPlaylistType) {
 @property (nonatomic) NSInteger mediaSequence;
 @property (nonatomic) NSUInteger version;
 @property (nonatomic) KFHLSManifestPlaylistType playlistType;
+@property (nonatomic) CGSize videoSize;
 
-- (id) initWithTargetDuration:(float)targetDuration playlistType:(KFHLSManifestPlaylistType)playlistType;
+- (id) initWithTargetDuration:(float)targetDuration playlistType:(KFHLSManifestPlaylistType)playlistType videoSize:(CGSize)videoSize;
 
 - (void) appendFileName:(NSString *)fileName duration:(float)duration mediaSequence:(NSUInteger)mediaSequence;
 - (void) appendFromLiveManifest:(NSString*)liveManifest;
 
 - (void) finalizeManifest;
 
-- (NSString*) manifestString;
+- (NSString *) masterString;
+- (NSString *) manifestString;
 
 @end
