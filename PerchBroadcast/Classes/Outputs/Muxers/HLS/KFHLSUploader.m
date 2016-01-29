@@ -140,6 +140,9 @@ static NSString * const kKFS3Key = @"kKFS3Key";
         uploadRequest.key = key;
         uploadRequest.body = [NSURL fileURLWithPath:filePath];
         uploadRequest.ACL = AWSS3ObjectCannedACLPublicRead;
+        uploadRequest.contentType = @"video/MP2T";
+        
+        // https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/StreamingMediaGuide/DeployingHTTPLiveStreaming/DeployingHTTPLiveStreaming.html
         
         [[self.transferManager upload:uploadRequest] continueWithBlock:^id(AWSTask *task) {
             if (task.error) {
@@ -176,6 +179,7 @@ static NSString * const kKFS3Key = @"kKFS3Key";
     uploadRequest.body = data;
     uploadRequest.ACL = AWSS3ObjectCannedACLPublicRead;
     uploadRequest.cacheControl = @"max-age=0";
+    uploadRequest.contentType = @"application/x-mpegURL";
     uploadRequest.contentLength = @(data.length);
     
     [[self.s3 putObject:uploadRequest] continueWithBlock:^id(AWSTask *task) {

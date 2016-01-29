@@ -17,7 +17,7 @@
 @implementation KFHLSManifestGenerator
 
 - (NSMutableString*) header {
-    NSMutableString *header = [NSMutableString stringWithFormat:@"#EXTM3U\n#EXT-X-VERSION:%lu\n#EXT-X-TARGETDURATION:%g\n", (unsigned long)self.version, self.targetDuration];
+    NSMutableString *header = [NSMutableString stringWithFormat:@"#EXTM3U\n#EXT-X-VERSION:%lu\n#EXT-X-TARGETDURATION:%d\n", (unsigned long)self.version, (int)self.targetDuration];
     NSString *type = nil;
     if (self.playlistType == KFHLSManifestPlaylistTypeVOD) {
         type = @"VOD";
@@ -53,7 +53,7 @@
     }
     self.mediaSequence = mediaSequence;
     if (duration > self.targetDuration) {
-        self.targetDuration = duration;
+        self.targetDuration = (int)ceilf(duration);
     }
     [self.segmentsString appendFormat:@"#EXTINF:%g,\n%@\n", duration, fileName];
 }
@@ -64,8 +64,12 @@
 }
 
 - (NSString*) stripToNumbers:(NSString*)string {
+    NSMutableCharacterSet *set = [NSMutableCharacterSet decimalDigitCharacterSet];
+    [set addCharactersInString:@"."];
+    NSCharacterSet *invertedSet = [set invertedSet];
+    
     return [[string componentsSeparatedByCharactersInSet:
-             [[NSCharacterSet decimalDigitCharacterSet] invertedSet]]
+             invertedSet]
             componentsJoinedByString:@""];
 }
 

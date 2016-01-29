@@ -16,7 +16,7 @@ typedef NS_ENUM(NSUInteger, KFHLSManifestPlaylistType) {
 
 @interface KFHLSManifestGenerator : NSObject
 
-@property (nonatomic) double targetDuration;
+@property (nonatomic) NSUInteger targetDuration;
 @property (nonatomic) NSInteger mediaSequence;
 @property (nonatomic) NSUInteger version;
 @property (nonatomic) KFHLSManifestPlaylistType playlistType;
