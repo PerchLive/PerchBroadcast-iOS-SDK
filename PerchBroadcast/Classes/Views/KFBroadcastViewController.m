@@ -130,7 +130,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor blackColor];
     [self setupCameraView];
-    [self setupShareButton];
+    //[self setupShareButton];
     [self setupRecordButton];
     [self setupCancelButton];
     [self setupRotationImageView];
