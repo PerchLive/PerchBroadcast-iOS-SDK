@@ -401,6 +401,11 @@ static NSString * const kKFS3Key = @"kKFS3Key";
             // Live
             [self updateManifestWithString:[self manifestSnapshot] manifestName:kLiveManifestFileName];
             
+            // Incremental VOD updates
+            
+            [self updateManifestWithString:[self.manifestGenerator manifestStringAtMediaSequence:0] manifestName:kVODManifestFileName];
+            
+            
             // VOD
             if (self.isFinishedRecording) {
                 [self.manifestGenerator appendFromLiveManifest:[self manifestSnapshot]];

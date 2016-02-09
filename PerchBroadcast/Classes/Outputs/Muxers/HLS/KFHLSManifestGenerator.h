@@ -31,5 +31,6 @@ typedef NS_ENUM(NSUInteger, KFHLSManifestPlaylistType) {
 
 - (NSString *) masterString;
 - (NSString *) manifestString;
+- (NSString *) manifestStringAtMediaSequence:(NSUInteger)mediaSequence;
 
 @end

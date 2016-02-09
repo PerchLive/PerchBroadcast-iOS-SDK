@@ -16,7 +16,7 @@
 
 @implementation KFHLSManifestGenerator
 
-- (NSMutableString*) header {
+- (NSMutableString*) headerWithMediaSequence:(NSUInteger)mediaSequence {
     NSMutableString *header = [NSMutableString stringWithFormat:@"#EXTM3U\n#EXT-X-VERSION:%lu\n#EXT-X-TARGETDURATION:%d\n", (unsigned long)self.version, (int)self.targetDuration];
     NSString *type = nil;
     if (self.playlistType == KFHLSManifestPlaylistTypeVOD) {
@@ -27,7 +27,7 @@
     if (type) {
         [header appendFormat:@"#EXT-X-PLAYLIST-TYPE:%@\n", type];
     }
-    [header appendFormat:@"#EXT-X-MEDIA-SEQUENCE:%ld\n", (long)self.mediaSequence];
+    [header appendFormat:@"#EXT-X-MEDIA-SEQUENCE:%ld\n", (long)mediaSequence];
     return header;
 }
 
@@ -115,8 +115,12 @@
                 (self.finished ? @"vod" : @"index")];
 }
 
-- (NSString *) manifestString {
-    NSMutableString *manifest = [self header];
+- (NSString*) manifestString {
+    return [self manifestStringAtMediaSequence:self.mediaSequence];
+}
+
+- (NSString *) manifestStringAtMediaSequence:(NSUInteger)mediaSequence {
+    NSMutableString *manifest = [self headerWithMediaSequence:mediaSequence];
     
     NSArray *sortedKeys = [[self.segments allKeys] sortedArrayUsingSelector:@selector(compare:)];
     for (NSNumber *key in sortedKeys) {
