@@ -39,6 +39,7 @@ Pod::Spec.new do |s|
   }
 
   s.source_files        = 'PerchBroadcast/Classes/**/*', 
+  s.exclude_files       = '**/*.markdown'
   # s.public_header_files = 'PerchBroadcast/Classes/**/*.h'
   s.libraries           = 'c++'
 
