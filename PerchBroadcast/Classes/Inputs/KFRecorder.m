@@ -139,6 +139,10 @@
     _videoConnection = [_videoOutput connectionWithMediaType:AVMediaTypeVideo];
 }
 
+- (void)setVideoOrientation:(AVCaptureVideoOrientation)videoOrientation {
+    self.videoConnection.videoOrientation = videoOrientation;
+}
+
 #pragma mark KFEncoderDelegate method
 - (void) encoder:(KFEncoder*)encoder encodedFrame:(KFFrame *)frame {
     if (encoder == _h264Encoder) {

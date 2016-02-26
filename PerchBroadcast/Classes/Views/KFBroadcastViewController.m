@@ -192,6 +192,10 @@
             self.rotationImageView.alpha = 0.0f;
         } completion:NULL];
     }
+
+    if (UIInterfaceOrientationIsLandscape(orientation)) {
+        self.recorder.videoOrientation = [self avOrientationForInterfaceOrientation:orientation];
+    }
 }
 
 - (AVCaptureVideoOrientation) avOrientationForInterfaceOrientation:(UIInterfaceOrientation)orientation {

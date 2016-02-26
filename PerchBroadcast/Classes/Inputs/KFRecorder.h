@@ -70,6 +70,8 @@
 
 @property (nonatomic) BOOL isRecording;
 
+@property (nonatomic) AVCaptureVideoOrientation videoOrientation;
+
 @property (nonatomic, weak) id<KFRecorderDelegate> delegate;
 
 - (void) startRecording;
