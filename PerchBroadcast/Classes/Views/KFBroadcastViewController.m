@@ -16,12 +16,24 @@
 
 @implementation KFBroadcastViewController
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (id) initWithAPIClient:(id<BroadcastAPIClient>)apiClient {
     if (self = [super init]) {
         self.recorder = [[KFRecorder alloc] initWithAPIClient:apiClient];
         self.recorder.delegate = self;
+
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidEnterBackground:) name:UIApplicationDidEnterBackgroundNotification object:nil];
     }
     return self;
+}
+
+- (void)applicationDidEnterBackground:(NSNotification *)note {
+    if (self.recorder.isRecording) {
+        [self.recorder stopRecording];
+    }
 }
 
 - (void) setupCameraView {
