@@ -59,4 +59,18 @@
     return regionType;
 }
 
+#pragma mark - New Credentials Provider
+
+- (AWSTask<AWSCredentials *> *)credentials {
+    return [AWSTask taskWithResult:[[AWSCredentials alloc]
+        initWithAccessKey:self.accessKey
+        secretKey:self.secretKey
+        sessionKey:self.sessionKey
+        expiration:self.expiration]];
+}
+
+- (void)invalidateCachedTemporaryCredentials {
+    // NOOP
+}
+
 @end
